@@ -24,3 +24,4 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 .nb-gradle/
+/route-manager/nbproject/private/
