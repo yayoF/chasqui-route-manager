@@ -4,18 +4,12 @@
  * and open the template in the editor.
  */
 package chasqui.route.tabu;
+
 /**
  *
  * @author Joca
  */
-public class ChasquiRouteTabu {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
- 
-        // TODO code application logic here
-    }
+public class TabuSearch {
     
+
 }
