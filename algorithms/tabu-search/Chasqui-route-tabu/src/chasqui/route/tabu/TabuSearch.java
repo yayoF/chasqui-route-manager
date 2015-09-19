@@ -11,5 +11,30 @@ package chasqui.route.tabu;
  */
 public class TabuSearch {
     
-
+    protected int maxIteration = 10000;
+    
+    public TabuSearch(int maxIteration) {
+        this.maxIteration = maxIteration;
+    }
+    
+    public void execute () {
+        
+        int iteration = 0;
+        
+        while (! this.stoppingCondition(iteration)) {
+            
+            
+            System.out.println(" iteration " + iteration);
+           
+            iteration ++;
+          
+        }                        
+        
+    }
+    
+    protected boolean stoppingCondition(int iteration) {
+        
+        return iteration >= this.maxIteration;
+    
+    }
 }
