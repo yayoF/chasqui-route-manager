@@ -15,13 +15,22 @@ hs_err_pid*
 
 .idea/
 
-#NetBeans ignore folders
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
-.nb-gradle/
-/route-manager/nbproject/private/
+#NetBeans ignore folders Grasp
+algorithms/grasp/Chasqui-route-GRASP/nbproject/private/
+algorithms/grasp/Chasqui-route-GRASP/build/
+algorithms/grasp/Chasqui-route-GRASP/nbbuild/
+algorithms/grasp/Chasqui-route-GRASP/dist/
+algorithms/grasp/Chasqui-route-GRASP/nbdist/
+algorithms/grasp/Chasqui-route-GRASP/nbactions.xml
+algorithms/grasp/Chasqui-route-GRASP/nb-configuration.xml
+algorithms/grasp/Chasqui-route-GRASP/.nb-gradle/
+
+#NetBeans ignore folders Tabu
+algorithms/tabu-search/Chasqui-route-tabu/nbproject/private/
+algorithms/tabu-search/Chasqui-route-tabu/build/
+algorithms/tabu-search/Chasqui-route-tabu/nbbuild/
+algorithms/tabu-search/Chasqui-route-tabu/dist/
+algorithms/tabu-search/Chasqui-route-tabu/nbdist/
+algorithms/tabu-search/Chasqui-route-tabu/nbactions.xml
+algorithms/tabu-search/Chasqui-route-tabu/nb-configuration.xml
+algorithms/tabu-search/Chasqui-route-tabu/.nb-gradle/
