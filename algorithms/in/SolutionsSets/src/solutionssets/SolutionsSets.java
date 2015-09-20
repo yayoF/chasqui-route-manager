@@ -26,6 +26,11 @@ public class SolutionsSets {
 
         System.out.println(randomNum);
         
+        //Begin taboo set lists
+        int tabuLength = rand.nextInt((9 - 1) + 1) + 1;
+        
+        
+        
     }
     
 }
