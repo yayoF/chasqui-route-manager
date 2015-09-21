@@ -72,11 +72,15 @@ public class TabuSearch {
     }
 
     protected ArrayList<SolutionCandidate> generateNeighborhood(sCandidate) {
+
         return new ArrayList<SolutionCandidate>();
+
     }
 
     protected SolutionCandidate generateInitialSolution() {
+
         return new SolutionCandidate();
+
     }
 
     protected boolean stoppingCondition(int iteration) {
