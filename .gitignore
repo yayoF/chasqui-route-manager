@@ -34,4 +34,9 @@ algorithms/tabu-search/Chasqui-route-tabu/nbdist/
 algorithms/tabu-search/Chasqui-route-tabu/nbactions.xml
 algorithms/tabu-search/Chasqui-route-tabu/nb-configuration.xml
 algorithms/tabu-search/Chasqui-route-tabu/.nb-gradle/
+<<<<<<< Updated upstream
 /gui/simple-route-manager-gui/nbproject/private/
+=======
+/algorithms/in/SolutionsSets/nbproject/private/
+/algorithms/in/SolutionsSets/build/
+>>>>>>> Stashed changes
