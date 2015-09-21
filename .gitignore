@@ -1,5 +1,8 @@
 *.class
 
+#mac lovers
+.DS_Store
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -37,3 +40,4 @@ algorithms/tabu-search/Chasqui-route-tabu/.nb-gradle/
 /gui/simple-route-manager-gui/nbproject/private/
 /gui/simple-route-manager-gui/build/
 /gui/simple-route-manager-gui/dist/
+/algorithms/tabu-search/Utils/nbproject/private/
