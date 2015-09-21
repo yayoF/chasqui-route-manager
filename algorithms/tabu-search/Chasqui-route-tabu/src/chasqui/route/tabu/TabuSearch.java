@@ -50,10 +50,12 @@ public class TabuSearch {
 
             }
 
+            //evaluate best candidate obtained this interation
             if( bestCandidate.fitness() > sBest.fitness() ) {
                 sBest = bestCandidate;
             }
 
+            //update Tabu List
             addCandidateTabuList(bestCandidate);
 
             iteration ++;
