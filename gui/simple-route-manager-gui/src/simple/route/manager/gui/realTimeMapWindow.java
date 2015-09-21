@@ -6,6 +6,7 @@
 package simple.route.manager.gui;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +36,7 @@ public class realTimeMapWindow extends javax.swing.JInternalFrame {
         rButtonTruck = new javax.swing.JRadioButton();
         rButtonClient = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        btnGenerateDoc = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,6 +80,13 @@ public class realTimeMapWindow extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Elementos del Mapa");
 
+        btnGenerateDoc.setText("Generar Hoja de Ruta");
+        btnGenerateDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateDocActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,25 +99,29 @@ public class realTimeMapWindow extends javax.swing.JInternalFrame {
                     .addComponent(rButtonRoute)
                     .addComponent(rButtonTruck)
                     .addComponent(rButtonClient)
-                    .addComponent(jLabel1))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(btnGenerateDoc))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(rButtonRoute)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rButtonTruck)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rButtonClient)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                        .addComponent(btnGenerateDoc))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(rButtonRoute)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rButtonTruck)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rButtonClient)
-                .addContainerGap(319, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,8 +132,14 @@ public class realTimeMapWindow extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void btnGenerateDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateDocActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Hoja de ruta generada.");
+    }//GEN-LAST:event_btnGenerateDocActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerateDoc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton rButtonClient;

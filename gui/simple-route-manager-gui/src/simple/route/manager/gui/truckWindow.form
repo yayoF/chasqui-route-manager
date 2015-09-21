@@ -30,7 +30,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtTruckID" min="-2" pref="156" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSearchClient" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSearchTruck" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtTruckID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSearchClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSearchTruck" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -112,12 +112,12 @@
         <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSearchClient">
+    <Component class="javax.swing.JButton" name="btnSearchTruck">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchClientActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchTruckActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEditClient">

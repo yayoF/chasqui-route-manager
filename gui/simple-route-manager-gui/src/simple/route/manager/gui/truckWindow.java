@@ -34,7 +34,7 @@ public class truckWindow extends javax.swing.JInternalFrame {
         txtTruckID = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnSearchClient = new javax.swing.JButton();
+        btnSearchTruck = new javax.swing.JButton();
         btnEditClient = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -76,10 +76,10 @@ public class truckWindow extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Código:");
 
-        btnSearchClient.setText("Buscar");
-        btnSearchClient.addActionListener(new java.awt.event.ActionListener() {
+        btnSearchTruck.setText("Buscar");
+        btnSearchTruck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchClientActionPerformed(evt);
+                btnSearchTruckActionPerformed(evt);
             }
         });
 
@@ -225,7 +225,7 @@ public class truckWindow extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtTruckID, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearchClient))
+                        .addComponent(btnSearchTruck))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -256,7 +256,7 @@ public class truckWindow extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtTruckID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearchClient))
+                            .addComponent(btnSearchTruck))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -281,11 +281,11 @@ public class truckWindow extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnSearchClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClientActionPerformed
+    private void btnSearchTruckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchTruckActionPerformed
         // TODO add your handling code here:
-        JDialog search = new searchClientDialog(null,true);
+        JDialog search = new searchTruckDialog(null,true);
         search.setVisible(true);
-    }//GEN-LAST:event_btnSearchClientActionPerformed
+    }//GEN-LAST:event_btnSearchTruckActionPerformed
 
     private void btnEditClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditClientActionPerformed
         // TODO add your handling code here:
@@ -330,7 +330,7 @@ public class truckWindow extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEditClient;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSearchClient;
+    private javax.swing.JButton btnSearchTruck;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
