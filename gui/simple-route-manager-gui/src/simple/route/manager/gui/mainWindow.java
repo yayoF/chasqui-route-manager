@@ -50,6 +50,7 @@ public class mainWindow extends javax.swing.JFrame {
         menuConfig = new javax.swing.JMenu();
         mItemConfig = new javax.swing.JMenuItem();
         mItemEditProfiles = new javax.swing.JMenuItem();
+        mItemEditUsers = new javax.swing.JMenuItem();
         mItemMap = new javax.swing.JMenu();
         mItemRealTime = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -133,6 +134,14 @@ public class mainWindow extends javax.swing.JFrame {
             }
         });
         menuConfig.add(mItemEditProfiles);
+
+        mItemEditUsers.setText("Editar Usuarios/Contraseñas");
+        mItemEditUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemEditUsersActionPerformed(evt);
+            }
+        });
+        menuConfig.add(mItemEditUsers);
 
         jMenuBar1.add(menuConfig);
 
@@ -238,6 +247,14 @@ public class mainWindow extends javax.swing.JFrame {
         newOrder.setVisible(true);
     }//GEN-LAST:event_mItemNewOrderActionPerformed
 
+    private void mItemEditUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEditUsersActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame editUsers = new editUsersPassWindow();
+        editUsers.setLocation((this.getSize().width - editUsers.getSize().width)/2, (this.getSize().height - editUsers.getSize().height)/2);
+        this.add(editUsers);
+        editUsers.setVisible(true);
+    }//GEN-LAST:event_mItemEditUsersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +302,7 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemClente;
     private javax.swing.JMenuItem mItemConfig;
     private javax.swing.JMenuItem mItemEditProfiles;
+    private javax.swing.JMenuItem mItemEditUsers;
     private javax.swing.JMenu mItemMap;
     private javax.swing.JMenuItem mItemNewOrder;
     private javax.swing.JMenuItem mItemRealTime;
