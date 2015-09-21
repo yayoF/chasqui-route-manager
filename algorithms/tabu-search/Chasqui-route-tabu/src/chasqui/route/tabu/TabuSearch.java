@@ -5,51 +5,91 @@
  */
 package chasqui.route.tabu;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joca
  */
 public class TabuSearch {
-    
-    protected int maxIteration = 1000;
-    protected SolutionCandidate candidate;
-    
+
+    protected int maxIteration = 1000, maxTabuSize = 10;
+    protected SolutionCandidate sCandidate, bestCandidate, s, sBest;
+    protected ArrayList<SolutionCandidate> tabuList = new ArrayList<>();
+    protected ArrayList<SolutionCandidate> candidateList = new ArrayList<>();
+    protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList<>();
+
     public TabuSearch(int maxIteration) {
-        
+
         this.maxIteration = maxIteration;
-        
+
     }
-    
+
     public void execute () {
-        
+        SolutionCandidate actualNeighbor;
         int iteration = 0;
-        
+
         //generate a optimize initial solutioncandidate
-        candidate = generateInitialSolution();
-        
+        sCandidate = generateInitialSolution();
+
         while (! this.stoppingCondition(iteration)) {
-                                    
-            System.out.println(" iteration " + iteration);
-           
+            candidateList.clear();
+            sNeighborhood = generateNeighborhood(sCandidate);
+
+            //obtain best candidate in the neighborhood of solutions generated
+            for (int j = 0;j < sNeighborhood.size() ; j++) {
+                actualNeighbor = sNeighborhood.get(j);
+
+                if(
+                    (! this.tabuList.contains(actualNeighbor) ) &&
+                    (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
+
+                        bestCandidate = actualNeighbor;
+
+                }
+
+            }
+
+            if( bestCandidate.fitness() > sBest.fitness() ) {
+                sBest = bestCandidate;
+            }
+
+            addCandidateTabuList(bestCandidate);
+
             iteration ++;
-          
-        }                        
-        
+
+        }
+
     }
-    
+
+    protected void addCandidateTabuList(SolutionCandidate s) {
+
+        this.tabuList.add(s);
+
+        if( this.tabuList.size() > this.maxTabuSize ) {
+            tabuList.remove(0);
+        }
+
+
+    }
+
+    protected ArrayList<SolutionCandidate> generateNeighborhood(sCandidate) {
+        return new ArrayList<SolutionCandidate>();
+    }
+
     protected SolutionCandidate generateInitialSolution() {
         return new SolutionCandidate();
     }
-    
+
     protected boolean stoppingCondition(int iteration) {
-        
+
         return iteration >= this.maxIteration;
-    
+
     }
-    
+
     protected boolean evaluateFitnessValue(int fitness1, int fitness2) {
-        
+
        return fitness1 > fitness2;
-       
+
     }
 }
