@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package simple.route.manager.gui;
-
+import java.awt.Dimension;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.UIManager;
 
 /**
  *
@@ -21,14 +23,13 @@ public class mainWindow extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
-    
+
     public mainWindow(String title){
         initComponents();
         this.setTitle(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,62 +39,59 @@ public class mainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mItemCargaDatos = new javax.swing.JMenuItem();
+        mItemClente = new javax.swing.JMenuItem();
+        menuConfig = new javax.swing.JMenu();
+        mItemConfig = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
-        jDesktopPane2.setLayout(jDesktopPane2Layout);
-        jDesktopPane2Layout.setHorizontalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jDesktopPane2Layout.setVerticalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Nueva");
+        jMenu1.setText("Nuevo");
 
-        jMenuItem1.setText("Carga de Datos");
-        jMenu1.add(jMenuItem1);
+        mItemCargaDatos.setText("Carga de Datos");
+        mItemCargaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemCargaDatosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemCargaDatos);
+
+        mItemClente.setText("Cliente");
+        mItemClente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemClenteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemClente);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Configuración");
-        jMenuBar1.add(jMenu2);
+        menuConfig.setText("Configuración");
+        menuConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConfigActionPerformed(evt);
+            }
+        });
 
-        jMenu3.setText("Clientes");
+        mItemConfig.setText("Configurar");
+        mItemConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConfigActionPerformed(evt);
+            }
+        });
+        menuConfig.add(mItemConfig);
+
+        jMenuBar1.add(menuConfig);
+
+        jMenu3.setText("Vista de Mapa");
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Camiones");
+        jMenu4.setText("Reportes");
         jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("MapView");
-        jMenuBar1.add(jMenu5);
-
-        jMenu6.setText("Reportes");
-        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -101,15 +99,46 @@ public class mainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1059, Short.MAX_VALUE)
+            .addGap(0, 1187, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
+            .addGap(0, 824, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mItemCargaDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemCargaDatosActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame batchLoad = new loadWindow("Nueva Carga de Datos");
+        
+        batchLoad.setLocation((this.getSize().width - batchLoad.getSize().width)/2,(this.getSize().height- batchLoad.getSize().height)/2);
+        this.add(batchLoad);
+        batchLoad.setVisible(true);
+    }//GEN-LAST:event_mItemCargaDatosActionPerformed
+
+    private void menuConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConfigActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_menuConfigActionPerformed
+
+    private void mItemConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConfigActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame config = new configWindow("Configuración");
+        
+        config.setLocation((this.getSize().width - config.getSize().width)/2, (this.getSize().height - config.getSize().height)/2);
+        this.add(config);
+        config.setVisible(true);
+    }//GEN-LAST:event_mItemConfigActionPerformed
+
+    private void mItemClenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemClenteActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame clientView = new clientWindow("Clientes");
+        clientView.setLocation((this.getSize().width - clientView.getSize().width)/2, (this.getSize().height - clientView.getSize().height)/2);
+        this.add(clientView);
+        clientView.setVisible(true);
+    }//GEN-LAST:event_mItemClenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,12 +150,14 @@ public class mainWindow extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            /*
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
+            }*/
+             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(mainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -147,15 +178,13 @@ public class mainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem mItemCargaDatos;
+    private javax.swing.JMenuItem mItemClente;
+    private javax.swing.JMenuItem mItemConfig;
+    private javax.swing.JMenu menuConfig;
     // End of variables declaration//GEN-END:variables
 }

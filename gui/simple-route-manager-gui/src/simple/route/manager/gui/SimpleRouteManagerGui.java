@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package simple.route.manager.gui;
-
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 public class SimpleRouteManagerGui {
 
