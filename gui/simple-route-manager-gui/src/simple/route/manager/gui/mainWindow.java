@@ -41,7 +41,7 @@ public class mainWindow extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mItemNewOrder = new javax.swing.JMenuItem();
         mItemCancelOrder = new javax.swing.JMenuItem();
         mItemTrucks = new javax.swing.JMenu();
         mItemCargaDatos = new javax.swing.JMenuItem();
@@ -63,8 +63,13 @@ public class mainWindow extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem2.setText("Nuevo");
-        jMenu1.add(jMenuItem2);
+        mItemNewOrder.setText("Nuevo");
+        mItemNewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemNewOrderActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemNewOrder);
 
         mItemCancelOrder.setText("Cancelar Pedido");
         mItemCancelOrder.setToolTipText("");
@@ -222,6 +227,14 @@ public class mainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mItemCancelOrderActionPerformed
 
+    private void mItemNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemNewOrderActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame newOrder = new orderWindow();
+        newOrder.setLocation((this.getSize().width - newOrder.getSize().width)/2, (this.getSize().height - newOrder.getSize().height)/2);
+        this.add(newOrder);
+        newOrder.setVisible(true);
+    }//GEN-LAST:event_mItemNewOrderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,13 +277,13 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mItemCancelOrder;
     private javax.swing.JMenuItem mItemCargaDatos;
     private javax.swing.JMenuItem mItemClente;
     private javax.swing.JMenuItem mItemConfig;
     private javax.swing.JMenuItem mItemEditProfiles;
     private javax.swing.JMenu mItemMap;
+    private javax.swing.JMenuItem mItemNewOrder;
     private javax.swing.JMenuItem mItemRealTime;
     private javax.swing.JMenu mItemTrucks;
     private javax.swing.JMenu menuConfig;
