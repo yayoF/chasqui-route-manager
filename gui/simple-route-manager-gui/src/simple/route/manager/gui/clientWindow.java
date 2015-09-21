@@ -5,6 +5,9 @@
  */
 package simple.route.manager.gui;
 
+import java.awt.Component;
+import javax.swing.JDialog;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +57,27 @@ public class clientWindow extends javax.swing.JInternalFrame {
         btnDelete = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
+
         jLabel1.setText("Código:");
 
         jLabel2.setText("Nombres:");
@@ -83,6 +107,11 @@ public class clientWindow extends javax.swing.JInternalFrame {
         txtClientRUC.setEditable(false);
 
         btnSearchClient.setText("Buscar");
+        btnSearchClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchClientActionPerformed(evt);
+            }
+        });
 
         btnEditClient.setText("Editar");
         btnEditClient.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +249,33 @@ public class clientWindow extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int res = JOptionPane.showOptionDialog(null, "¿Está seguro que quiere borrar este cliente?", "Atención", JOptionPane.YES_NO_OPTION,
+        JOptionPane.WARNING_MESSAGE, null, null, null);
+        
+        if(res == 0){
+            //Yes
+            JOptionPane.showMessageDialog(null, "Cliente borrado");
+        }
+        if(res == 1){
+            //No
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSearchClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClientActionPerformed
+        // TODO add your handling code here:
+        JDialog search = new searchClientDialog(null,true);
+        search.setVisible(true);
+    }//GEN-LAST:event_btnSearchClientActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formInternalFrameClosed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
