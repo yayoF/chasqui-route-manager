@@ -34,6 +34,10 @@ public class TabuSearch {
         
     }
     
+    protected void generateInitialSolution() {
+        
+    }
+    
     protected boolean stoppingCondition(int iteration) {
         
         return iteration >= this.maxIteration;
@@ -44,9 +48,5 @@ public class TabuSearch {
         
        return fitness1 > fitness2;
        
-    }
-    
-    protected int fitness() {
-       return 2; 
     }
 }
