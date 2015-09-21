@@ -174,7 +174,7 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void mItemConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConfigActionPerformed
         // TODO add your handling code here:
-        JInternalFrame config = new configWindow("Configuración");
+        JInternalFrame config = new configWindow();
         
         config.setLocation((this.getSize().width - config.getSize().width)/2, (this.getSize().height - config.getSize().height)/2);
         this.add(config);
