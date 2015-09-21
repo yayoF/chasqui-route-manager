@@ -26,7 +26,6 @@ public class TabuSearch {
     }
 
     public void execute () {
-        SolutionCandidate actualNeighbor;
         int iteration = 0;
 
         //generate a optimize initial solutioncandidate
@@ -37,17 +36,14 @@ public class TabuSearch {
             sNeighborhood = generateNeighborhood(sCandidate);
 
             //obtain best candidate in the neighborhood of solutions generated
-            for (int j = 0;j < sNeighborhood.size() ; j++) {
-                actualNeighbor = sNeighborhood.get(j);
-
+            for (SolutionCandidate actualNeighbor : sNeighborhood) {
                 if(
-                    (! this.tabuList.contains(actualNeighbor) ) &&
-                    (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
-
-                        bestCandidate = actualNeighbor;
-
+                        (! this.tabuList.contains(actualNeighbor) ) &&
+                        (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
+                    
+                    bestCandidate = actualNeighbor;
+                    
                 }
-
             }
 
             //evaluate best candidate obtained this interation
