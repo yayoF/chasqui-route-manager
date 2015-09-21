@@ -37,11 +37,11 @@ public class loginWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         txtPassword = new javax.swing.JTextField();
-        txtUsername = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        txtPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +82,7 @@ public class loginWindow extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                            .addComponent(txtUsername))
+                            .addComponent(txtPasswordField))
                         .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
@@ -94,8 +94,8 @@ public class loginWindow extends javax.swing.JFrame {
                     .addComponent(lblUsername))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
+                    .addComponent(lblPassword)
+                    .addComponent(txtPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
@@ -110,6 +110,9 @@ public class loginWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFrame mainContainer = new mainWindow("Simple Route Manager v.1.0.0 - Marshallers 2015");
         //Realizar validación del usuario/contraseña
+        
+        
+        
         mainContainer.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -160,6 +163,6 @@ public class loginWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JPasswordField txtPasswordField;
     // End of variables declaration//GEN-END:variables
 }
