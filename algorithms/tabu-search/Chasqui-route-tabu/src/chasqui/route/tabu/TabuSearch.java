@@ -11,10 +11,12 @@ package chasqui.route.tabu;
  */
 public class TabuSearch {
     
-    protected int maxIteration = 10000;
+    protected int maxIteration = 1000;
     
     public TabuSearch(int maxIteration) {
+        
         this.maxIteration = maxIteration;
+        
     }
     
     public void execute () {
@@ -36,5 +38,15 @@ public class TabuSearch {
         
         return iteration >= this.maxIteration;
     
+    }
+    
+    protected boolean evaluateFitnessValue(int fitness1, int fitness2) {
+        
+       return fitness1 > fitness2;
+       
+    }
+    
+    protected int fitness() {
+       return 0; 
     }
 }
