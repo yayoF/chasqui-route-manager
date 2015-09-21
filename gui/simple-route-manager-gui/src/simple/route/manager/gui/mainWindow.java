@@ -40,9 +40,10 @@ public class mainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mItemTrucks = new javax.swing.JMenu();
         mItemCargaDatos = new javax.swing.JMenuItem();
         mItemClente = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menuConfig = new javax.swing.JMenu();
         mItemConfig = new javax.swing.JMenuItem();
         mItemMap = new javax.swing.JMenu();
@@ -51,7 +52,7 @@ public class mainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Nuevo");
+        mItemTrucks.setText("Nuevo");
 
         mItemCargaDatos.setText("Carga de Datos");
         mItemCargaDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +60,7 @@ public class mainWindow extends javax.swing.JFrame {
                 mItemCargaDatosActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemCargaDatos);
+        mItemTrucks.add(mItemCargaDatos);
 
         mItemClente.setText("Cliente");
         mItemClente.addActionListener(new java.awt.event.ActionListener() {
@@ -67,9 +68,18 @@ public class mainWindow extends javax.swing.JFrame {
                 mItemClenteActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemClente);
+        mItemTrucks.add(mItemClente);
 
-        jMenuBar1.add(jMenu1);
+        jMenuItem1.setText("Camión");
+        jMenuItem1.setToolTipText("");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mItemTrucks.add(jMenuItem1);
+
+        jMenuBar1.add(mItemTrucks);
 
         menuConfig.setText("Configuración");
         menuConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +168,14 @@ public class mainWindow extends javax.swing.JFrame {
         mapView.setVisible(true);
     }//GEN-LAST:event_mItemRealTimeActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame truckView = new truckWindow();
+        truckView.setLocation((this.getSize().width - truckView.getSize().width)/2, (this.getSize().height - truckView.getSize().height)/2);
+        this.add(truckView);
+        truckView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -196,14 +214,15 @@ public class mainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem mItemCargaDatos;
     private javax.swing.JMenuItem mItemClente;
     private javax.swing.JMenuItem mItemConfig;
     private javax.swing.JMenu mItemMap;
     private javax.swing.JMenuItem mItemRealTime;
+    private javax.swing.JMenu mItemTrucks;
     private javax.swing.JMenu menuConfig;
     // End of variables declaration//GEN-END:variables
 }
