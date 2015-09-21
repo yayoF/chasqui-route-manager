@@ -47,6 +47,6 @@ public class TabuSearch {
     }
     
     protected int fitness() {
-       return 0; 
+       return 2; 
     }
 }
