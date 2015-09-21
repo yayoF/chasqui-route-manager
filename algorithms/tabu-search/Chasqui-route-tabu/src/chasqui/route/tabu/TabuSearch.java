@@ -88,9 +88,4 @@ public class TabuSearch {
 
     }
 
-    protected boolean evaluateFitnessValue(int fitness1, int fitness2) {
-
-       return fitness1 > fitness2;
-
-    }
 }
