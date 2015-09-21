@@ -275,6 +275,7 @@ public class truckWindow extends javax.swing.JInternalFrame {
         if(res == 0){
             //Yes
             JOptionPane.showMessageDialog(null, "Camión borrado");
+            //yes
         }
         if(res == 1){
             //No
