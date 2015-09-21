@@ -37,8 +37,7 @@ public class TabuSearch {
 
             //obtain best candidate in the neighborhood of solutions generated
             for (SolutionCandidate actualNeighbor : sNeighborhood) {
-                if(
-                        (! this.tabuList.contains(actualNeighbor) ) &&
+                if( (! this.tabuList.contains(actualNeighbor) ) &&
                         (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
 
                     bestCandidate = actualNeighbor;
@@ -71,7 +70,7 @@ public class TabuSearch {
 
     }
 
-    protected ArrayList<SolutionCandidate> generateNeighborhood(sCandidate) {
+    protected ArrayList<SolutionCandidate> generateNeighborhood(SolutionCandidate sCandidate) {
 
         return new ArrayList<SolutionCandidate>();
 
