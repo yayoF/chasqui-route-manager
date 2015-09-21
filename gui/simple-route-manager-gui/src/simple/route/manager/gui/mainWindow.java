@@ -224,7 +224,10 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void mItemCancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemCancelOrderActionPerformed
         // TODO add your handling code here:
-        
+        JInternalFrame cancelOrder = new cancelOrderWindow();
+        cancelOrder.setLocation((this.getSize().width - cancelOrder.getSize().width)/2, (this.getSize().height - cancelOrder.getSize().height)/2);
+        this.add(cancelOrder);
+        cancelOrder.setVisible(true);
     }//GEN-LAST:event_mItemCancelOrderActionPerformed
 
     private void mItemNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemNewOrderActionPerformed
