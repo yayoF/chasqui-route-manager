@@ -12,6 +12,7 @@ package chasqui.route.tabu;
 public class TabuSearch {
     
     protected int maxIteration = 1000;
+    protected SolutionCandidate candidate;
     
     public TabuSearch(int maxIteration) {
         
@@ -23,9 +24,11 @@ public class TabuSearch {
         
         int iteration = 0;
         
+        //generate a optimize initial solutioncandidate
+        candidate = generateInitialSolution();
+        
         while (! this.stoppingCondition(iteration)) {
-            
-            
+                                    
             System.out.println(" iteration " + iteration);
            
             iteration ++;
@@ -34,8 +37,8 @@ public class TabuSearch {
         
     }
     
-    protected void generateInitialSolution() {
-        
+    protected SolutionCandidate generateInitialSolution() {
+        return new SolutionCandidate();
     }
     
     protected boolean stoppingCondition(int iteration) {
