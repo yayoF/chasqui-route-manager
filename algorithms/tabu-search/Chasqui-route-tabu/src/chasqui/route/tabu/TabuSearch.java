@@ -40,9 +40,9 @@ public class TabuSearch {
                 if(
                         (! this.tabuList.contains(actualNeighbor) ) &&
                         (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
-                    
+
                     bestCandidate = actualNeighbor;
-                    
+
                 }
             }
 
