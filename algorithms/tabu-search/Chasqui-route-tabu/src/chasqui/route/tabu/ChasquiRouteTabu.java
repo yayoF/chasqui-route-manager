@@ -19,7 +19,15 @@ public class ChasquiRouteTabu {
         TabuSearch chasquiOracle = new TabuSearch(0);
         
         chasquiOracle.execute();
-                
+        
+        SolutionCandidate initialSolution = chasquiOracle.getSolution();
+        
+        for (Route route : initialSolution.getRoutes()) {
+            for (Node node : route.getNodeList()) {
+                System.out.print(node.getId() + " - ");
+            }
+            System.out.println("");
+        }
         // TODO code application logic here
     }
     

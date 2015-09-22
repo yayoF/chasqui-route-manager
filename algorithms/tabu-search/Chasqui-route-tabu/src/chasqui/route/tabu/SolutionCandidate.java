@@ -15,6 +15,7 @@ public class SolutionCandidate {
     
     private ArrayList<Route> routes = new ArrayList<>();
     
+    
             
     public int fitness() 
     {
@@ -22,6 +23,20 @@ public class SolutionCandidate {
     }
     
     public void addRoute(Route r) {
-        this.routes.add(r);
+        this.getRoutes().add(r);
+    }
+
+    /**
+     * @return the routes
+     */
+    public ArrayList<Route> getRoutes() {
+        return routes;
+    }
+
+    /**
+     * @param routes the routes to set
+     */
+    public void setRoutes(ArrayList<Route> routes) {
+        this.routes = routes;
     }
 }

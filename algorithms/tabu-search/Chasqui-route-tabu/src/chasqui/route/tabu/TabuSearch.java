@@ -148,5 +148,9 @@ public class TabuSearch {
         return iteration >= this.maxIteration;
 
     }
+    
+    protected SolutionCandidate getSolution() {
+        return sBest;
+    }
 
 }
