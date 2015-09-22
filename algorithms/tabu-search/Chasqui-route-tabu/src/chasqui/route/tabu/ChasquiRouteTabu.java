@@ -19,10 +19,7 @@ public class ChasquiRouteTabu {
         TabuSearch chasquiOracle = new TabuSearch(4);
         
         chasquiOracle.execute();
-
-        
-
-        
+                
         // TODO code application logic here
     }
     

@@ -15,11 +15,10 @@ public class Node {
     private Position pos;
     private int demand;
     
-    public Node(int id, int x, int y) {
+    public Node(int id, int x, int y, int demand) {
         this.id = id;
-        this.pos.setCoordX(x);
-        this.pos.setCoordY(y);
-        
+        this.pos = new Position(x,y);
+        this.demand = demand;
     }
 
     /**

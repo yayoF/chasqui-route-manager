@@ -14,18 +14,42 @@ import java.util.ArrayList;
 public class Route {
     
     private ArrayList<Node> nodeList = new ArrayList<>();
+    private int demand;
     
     public Route(Node depotNode) {
         this.nodeList.add(depotNode); //first node
         this.nodeList.add(depotNode); //last node
+        this.demand = 0;
     }
     
     public int getDemand() {
-        return 0;
+        return demand;
     }
     
     public void addNode(Node n) {
-        // add node after actual position
+        this.nodeList.add(this.getNodeList().size() - 1, n);
+        this.setDemand(this.getDemand() + n.getDemand());
+    }
+
+    /**
+     * @return the nodeList
+     */
+    public ArrayList<Node> getNodeList() {
+        return nodeList;
+    }
+
+    /**
+     * @param nodeList the nodeList to set
+     */
+    public void setNodeList(ArrayList<Node> nodeList) {
+        this.nodeList = nodeList;
+    }
+
+    /**
+     * @param demand the demand to set
+     */
+    public void setDemand(int demand) {
+        this.demand = demand;
     }
     
     

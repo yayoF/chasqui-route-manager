@@ -19,6 +19,11 @@ public class Position {
         this.coordY = 0;
     }
 
+    public Position(int x, int y) {
+        this.coordX = x;
+        this.coordY = y;
+    }
+        
     /**
      * @return the coordX
      */
