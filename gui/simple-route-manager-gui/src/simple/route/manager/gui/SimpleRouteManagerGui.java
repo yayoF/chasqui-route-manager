@@ -14,7 +14,7 @@ public class SimpleRouteManagerGui {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JFrame loginFrame = new loginWindow("Login - Simple Route Manager v.1.0.0");
+        JFrame loginFrame = new loginWindow();
         loginFrame.setVisible(true);
     }
     

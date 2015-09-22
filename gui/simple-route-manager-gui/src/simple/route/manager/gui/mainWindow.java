@@ -7,6 +7,7 @@ package simple.route.manager.gui;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -39,6 +40,7 @@ public class mainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mItemNewOrder = new javax.swing.JMenuItem();
@@ -61,8 +63,14 @@ public class mainWindow extends javax.swing.JFrame {
         mItemGasPriceReport = new javax.swing.JMenuItem();
         mItemRemisionOrders = new javax.swing.JMenuItem();
         mItemReportHistory = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        mItemSignOut = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Bienvenido USUARIO_1");
 
         jMenu1.setText("Pedidos");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -224,17 +232,38 @@ public class mainWindow extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu2.setText("Sesión");
+
+        jMenuItem2.setText("USUARIO_1");
+        jMenu2.add(jMenuItem2);
+
+        mItemSignOut.setText("Cerrar Sesión");
+        mItemSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemSignOutActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mItemSignOut);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1187, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(1003, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 824, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(779, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -379,6 +408,23 @@ public class mainWindow extends javax.swing.JFrame {
         user.setVisible(true);
     }//GEN-LAST:event_mItemUserActionPerformed
 
+    private void mItemSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemSignOutActionPerformed
+        // TODO add your handling code here:
+        int res = JOptionPane.showOptionDialog(null, "¿Está seguro que cerrar esta sesión?", "Atención", JOptionPane.YES_NO_OPTION,
+        JOptionPane.WARNING_MESSAGE, null, null, null);
+        
+        if(res == 0){
+            //Yes
+            JOptionPane.showMessageDialog(null, "Sesión Cerrada. Hasta Luego!");
+            JFrame loginWindow = new loginWindow();
+            loginWindow.setVisible(true);
+            this.dispose();
+        }
+        if(res == 1){
+            //No
+        }
+    }//GEN-LAST:event_mItemSignOutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -417,10 +463,13 @@ public class mainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mItemCancelOrder;
     private javax.swing.JMenuItem mItemCargaDatos;
     private javax.swing.JMenuItem mItemClente;
@@ -436,6 +485,7 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemRealTime;
     private javax.swing.JMenuItem mItemRemisionOrders;
     private javax.swing.JMenuItem mItemReportHistory;
+    private javax.swing.JMenuItem mItemSignOut;
     private javax.swing.JMenu mItemTrucks;
     private javax.swing.JMenuItem mItemUser;
     private javax.swing.JMenu menuConfig;

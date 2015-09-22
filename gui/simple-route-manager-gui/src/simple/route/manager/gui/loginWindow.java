@@ -19,13 +19,6 @@ public class loginWindow extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
-    
-    public loginWindow(String title){
-        initComponents();
-        this.setTitle(title);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +37,7 @@ public class loginWindow extends javax.swing.JFrame {
         txtPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login - Simple Route Manager v.1.0.0");
 
         lblUsername.setText("Usuario:");
 
