@@ -105,7 +105,7 @@ public class TabuSearch {
             }
 
             while(currentVehicle.getCapacity(r) > 0) {
-                nearestCustomer = findNearestCustomer(currentVehicle, r);
+                nearestCustomer = findNearestCustomer(currentVehicle, r, visitedCustomers);
 
                 if(nearestCustomer == null) {
                     break;
@@ -126,9 +126,33 @@ public class TabuSearch {
 
     }
 
-    protected Node findNearestCustomer(Vehicle v, Route r) {
+    protected Node findNearestCustomer(Vehicle v, Route r, ArrayList<Integer> visitedCustomers) {
         
-        //int currX = r.getNodeList().g
+        Position currPos = r.getLastAddedNode().getPos();
+        boolean customerHasBeenVisited = false;
+        
+        for (int i=0; i<customersList.size(); i++){
+            
+            for (int m=0; m<visitedCustomers.size(); m++){
+                if ( customersList.get(i).getId() == visitedCustomers.get(m) ){
+                    customerHasBeenVisited = true;
+                    break;
+                }
+            }
+            
+            if (customerHasBeenVisited){
+                continue;
+            }else{
+                
+                //compare distances between customer and vehicle
+                
+                
+            }
+                
+        }
+            
+        
+        
         
         return this.customersList.get(0);
     }
