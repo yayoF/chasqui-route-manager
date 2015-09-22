@@ -27,9 +27,8 @@ public class Route {
     }
     
     public Node getLastAddedNode(){
-        Node node = nodeList.get(0);
-        
-        return node;
+        int positionlastAdded = nodeList.size() - 1;
+        return nodeList.get(positionlastAdded);
     }
     
     public void addNode(Node n) {
