@@ -45,8 +45,10 @@ public class mainWindow extends javax.swing.JFrame {
         mItemCancelOrder = new javax.swing.JMenuItem();
         mItemTrucks = new javax.swing.JMenu();
         mItemCargaDatos = new javax.swing.JMenuItem();
+        mItemUser = new javax.swing.JMenuItem();
         mItemClente = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        mItemProduct = new javax.swing.JMenuItem();
         menuConfig = new javax.swing.JMenu();
         mItemConfig = new javax.swing.JMenuItem();
         mItemEditProfiles = new javax.swing.JMenuItem();
@@ -54,6 +56,11 @@ public class mainWindow extends javax.swing.JFrame {
         mItemMap = new javax.swing.JMenu();
         mItemRealTime = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        mItemIncomeReport = new javax.swing.JMenuItem();
+        mItemPurchaseReport = new javax.swing.JMenuItem();
+        mItemGasPriceReport = new javax.swing.JMenuItem();
+        mItemRemisionOrders = new javax.swing.JMenuItem();
+        mItemReportHistory = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +91,11 @@ public class mainWindow extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         mItemTrucks.setText("Nuevo");
+        mItemTrucks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemTrucksActionPerformed(evt);
+            }
+        });
 
         mItemCargaDatos.setText("Carga de Datos");
         mItemCargaDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +104,14 @@ public class mainWindow extends javax.swing.JFrame {
             }
         });
         mItemTrucks.add(mItemCargaDatos);
+
+        mItemUser.setText("Usuario");
+        mItemUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemUserActionPerformed(evt);
+            }
+        });
+        mItemTrucks.add(mItemUser);
 
         mItemClente.setText("Cliente");
         mItemClente.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +129,14 @@ public class mainWindow extends javax.swing.JFrame {
             }
         });
         mItemTrucks.add(jMenuItem1);
+
+        mItemProduct.setText("Producto");
+        mItemProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemProductActionPerformed(evt);
+            }
+        });
+        mItemTrucks.add(mItemProduct);
 
         jMenuBar1.add(mItemTrucks);
 
@@ -157,7 +185,43 @@ public class mainWindow extends javax.swing.JFrame {
 
         jMenuBar1.add(mItemMap);
 
-        jMenu4.setText("Reportes");
+        jMenu4.setText("Documentos");
+
+        mItemIncomeReport.setText("Reporte de Ingresos");
+        mItemIncomeReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemIncomeReportActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mItemIncomeReport);
+
+        mItemPurchaseReport.setText("Reporte de Compras por Cliente");
+        mItemPurchaseReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemPurchaseReportActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mItemPurchaseReport);
+
+        mItemGasPriceReport.setText("Reporte de Precios del Gas");
+        mItemGasPriceReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemGasPriceReportActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mItemGasPriceReport);
+
+        mItemRemisionOrders.setText("Órdenes de Remisión");
+        jMenu4.add(mItemRemisionOrders);
+
+        mItemReportHistory.setText("Historial de Reportes");
+        mItemReportHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemReportHistoryActionPerformed(evt);
+            }
+        });
+        jMenu4.add(mItemReportHistory);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -200,6 +264,10 @@ public class mainWindow extends javax.swing.JFrame {
 
     private void mItemEditProfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemEditProfilesActionPerformed
         // TODO add your handling code here:
+        JInternalFrame editProfiles = new profilesWindow();
+        editProfiles.setLocation((this.getSize().width - editProfiles.getSize().width)/2, (this.getSize().height - editProfiles.getSize().height)/2);
+        this.add(editProfiles);
+        editProfiles.setVisible(true);      
     }//GEN-LAST:event_mItemEditProfilesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -255,6 +323,62 @@ public class mainWindow extends javax.swing.JFrame {
         editUsers.setVisible(true);
     }//GEN-LAST:event_mItemEditUsersActionPerformed
 
+    private void mItemPurchaseReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemPurchaseReportActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame purchaseReport = new clientReportWindow();
+        purchaseReport.setLocation((this.getSize().width - purchaseReport.getSize().width)/2, (this.getSize().height - purchaseReport.getSize().height)/2);
+        this.add(purchaseReport);
+        purchaseReport.setVisible(true);
+    }//GEN-LAST:event_mItemPurchaseReportActionPerformed
+
+    private void mItemIncomeReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemIncomeReportActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame incomeReport = new incomeReportWindow();
+        incomeReport.setLocation((this.getSize().width - incomeReport.getSize().width)/2, (this.getSize().height - incomeReport.getSize().height)/2);
+        this.add(incomeReport);
+        incomeReport.setVisible(true);
+    }//GEN-LAST:event_mItemIncomeReportActionPerformed
+
+    private void mItemGasPriceReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemGasPriceReportActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame gasPriceReport = new gasPriceReportWindow();
+        gasPriceReport.setLocation((this.getSize().width - gasPriceReport.getSize().width)/2, (this.getSize().height - gasPriceReport.getSize().height)/2);
+        this.add(gasPriceReport);
+        gasPriceReport.setVisible(true);
+    }//GEN-LAST:event_mItemGasPriceReportActionPerformed
+
+    private void mItemReportHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemReportHistoryActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame reportHistory = new reportHistoryWindow();
+        reportHistory.setLocation((this.getSize().width - reportHistory.getSize().width)/2, (this.getSize().height - reportHistory.getSize().height)/2);
+        this.add(reportHistory);
+        reportHistory.setVisible(true);
+    }//GEN-LAST:event_mItemReportHistoryActionPerformed
+
+    private void mItemProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemProductActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame product = new productWindow();
+        product.setLocation((this.getSize().width - product.getSize().width)/2, (this.getSize().height - product.getSize().height)/2);
+        this.add(product);
+        product.setVisible(true);
+    }//GEN-LAST:event_mItemProductActionPerformed
+
+    private void mItemTrucksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemTrucksActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame truck = new truckWindow();
+        truck.setLocation((this.getSize().width - truck.getSize().width)/2, (this.getSize().height - truck.getSize().height)/2);
+        this.add(truck);
+        truck.setVisible(true);
+    }//GEN-LAST:event_mItemTrucksActionPerformed
+
+    private void mItemUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemUserActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame user = new userWindow();
+        user.setLocation((this.getSize().width - user.getSize().width)/2, (this.getSize().height - user.getSize().height)/2);
+        this.add(user);
+        user.setVisible(true);
+    }//GEN-LAST:event_mItemUserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -303,10 +427,17 @@ public class mainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem mItemConfig;
     private javax.swing.JMenuItem mItemEditProfiles;
     private javax.swing.JMenuItem mItemEditUsers;
+    private javax.swing.JMenuItem mItemGasPriceReport;
+    private javax.swing.JMenuItem mItemIncomeReport;
     private javax.swing.JMenu mItemMap;
     private javax.swing.JMenuItem mItemNewOrder;
+    private javax.swing.JMenuItem mItemProduct;
+    private javax.swing.JMenuItem mItemPurchaseReport;
     private javax.swing.JMenuItem mItemRealTime;
+    private javax.swing.JMenuItem mItemRemisionOrders;
+    private javax.swing.JMenuItem mItemReportHistory;
     private javax.swing.JMenu mItemTrucks;
+    private javax.swing.JMenuItem mItemUser;
     private javax.swing.JMenu menuConfig;
     // End of variables declaration//GEN-END:variables
 }

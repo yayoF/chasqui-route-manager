@@ -205,7 +205,7 @@ public class cancelOrderWindow extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Producto", "Total", "Fecha de Creación"
             }
         ));
         jScrollPane1.setViewportView(tableOrderDetail);
