@@ -26,6 +26,12 @@ public class Route {
         return demand;
     }
     
+    public Node getLastAddedNode(){
+        Node node = nodeList.get(0);
+        
+        return node;
+    }
+    
     public void addNode(Node n) {
         this.nodeList.add(this.getNodeList().size() - 1, n);
         this.setDemand(this.getDemand() + n.getDemand());

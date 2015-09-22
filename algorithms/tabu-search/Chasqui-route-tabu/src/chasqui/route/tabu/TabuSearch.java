@@ -92,15 +92,16 @@ public class TabuSearch {
         SolutionCandidate initialSolution = new SolutionCandidate();
         Vehicle currentVehicle;
         Node nearestCustomer;
-
+        ArrayList<Integer> visitedCustomers = new ArrayList();
+        
         while (customersList.size() - routedCustomers == 0){
 
             Route r = new Route(this.depotNode);
-
+            
             currentVehicle = getAvailableVehicle();
 
             while(currentVehicle.getCapacity(r) > 0) {
-                nearestCustomer = findNearestCustomer(currentVehicle);
+                nearestCustomer = findNearestCustomer(currentVehicle, r);
 
                 if(nearestCustomer == null) {
                     break;
@@ -121,7 +122,10 @@ public class TabuSearch {
 
     }
 
-    protected Node findNearestCustomer(Vehicle v) {
+    protected Node findNearestCustomer(Vehicle v, Route r) {
+        
+        //int currX = r.getNodeList().g
+        
         return this.customersList.get(0);
     }
 
