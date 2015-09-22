@@ -5,9 +5,21 @@
  */
 package chasqui.route.tabu;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joca
  */
 public class Route {
+    
+    private ArrayList<Node> nodeList = new ArrayList<>();
+    
+    public Route(Node depotNode) {
+        this.nodeList.add(depotNode); //first node
+        this.nodeList.add(depotNode); //last node
+    }
+    
+    
+    
 }

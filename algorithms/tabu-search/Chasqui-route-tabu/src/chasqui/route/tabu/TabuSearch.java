@@ -13,10 +13,11 @@ import java.util.ArrayList;
  */
 public class TabuSearch {
 
+    
+    protected ArrayList<Node> customersList = new ArrayList<>();
     protected int maxIteration = 1000, maxTabuSize = 10;
     protected SolutionCandidate sCandidate, bestCandidate, s, sBest;
     protected ArrayList<SolutionCandidate> tabuList = new ArrayList<>();
-    protected ArrayList<SolutionCandidate> candidateList = new ArrayList<>();
     protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList<>();
 
     public TabuSearch(int maxIteration) {
@@ -32,7 +33,7 @@ public class TabuSearch {
         sCandidate = generateInitialSolution();
 
         while (! this.stoppingCondition(iteration)) {
-            candidateList.clear();
+            
             sNeighborhood = generateNeighborhood(sCandidate);
 
             //obtain best candidate in the neighborhood of solutions generated
@@ -72,12 +73,30 @@ public class TabuSearch {
 
     protected ArrayList<SolutionCandidate> generateNeighborhood(SolutionCandidate sCandidate) {
 
+        
+        
         return new ArrayList<SolutionCandidate>();
+        
+        
+        
+        
 
     }
 
     protected SolutionCandidate generateInitialSolution() {
 
+        int routedCustomers = 0;
+        // We define an empty route that starts at the depot
+        
+        
+        while (customersList.size() - routedCustomers == 0){
+            
+            
+            
+            
+        } //until all customers are assigned a route
+        
+        
         return new SolutionCandidate();
 
     }
