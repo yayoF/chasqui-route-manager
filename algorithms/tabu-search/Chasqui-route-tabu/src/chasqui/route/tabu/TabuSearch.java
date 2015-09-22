@@ -126,7 +126,13 @@ public class TabuSearch {
     }
 
     protected Vehicle getAvailableVehicle() {
-        return this.vehicleList.get(0);
+        for (Vehicle vehicle : this.vehicleList) {
+            if(vehicle.isInUse()) {
+                vehicle.setInUse(true);
+                return vehicle;
+            }
+        }
+        return null;
     }
 
     protected boolean stoppingCondition(int iteration) {
