@@ -20,6 +20,13 @@ public class Route {
         this.nodeList.add(depotNode); //last node
     }
     
+    public int getDemand() {
+        return 0;
+    }
+    
+    public void addNode(Node n) {
+        // add node after actual position
+    }
     
     
 }

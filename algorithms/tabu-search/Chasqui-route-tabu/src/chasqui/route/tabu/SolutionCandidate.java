@@ -14,9 +14,14 @@ import java.util.ArrayList;
 public class SolutionCandidate {
     
     private ArrayList<Route> routes = new ArrayList<>();
+    
             
     public int fitness() 
     {
         return 0;
+    }
+    
+    public void addRoute(Route r) {
+        this.routes.add(r);
     }
 }

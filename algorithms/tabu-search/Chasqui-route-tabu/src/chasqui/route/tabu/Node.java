@@ -13,12 +13,55 @@ public class Node {
     
     private int id;
     private Position pos;
+    private int demand;
     
     public Node(int id, int x, int y) {
         this.id = id;
         this.pos.setCoordX(x);
         this.pos.setCoordY(y);
         
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the pos
+     */
+    public Position getPos() {
+        return pos;
+    }
+
+    /**
+     * @param pos the pos to set
+     */
+    public void setPos(Position pos) {
+        this.pos = pos;
+    }
+
+    /**
+     * @return the demand
+     */
+    public int getDemand() {
+        return demand;
+    }
+
+    /**
+     * @param demand the demand to set
+     */
+    public void setDemand(int demand) {
+        this.demand = demand;
     }
     
     

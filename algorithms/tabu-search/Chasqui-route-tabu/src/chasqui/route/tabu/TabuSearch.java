@@ -11,14 +11,17 @@ import java.util.ArrayList;
  *
  * @author Joca
  */
-public class TabuSearch {
-
-    
-    protected ArrayList<Node> customersList = new ArrayList<>();
+public class TabuSearch { 
+    //tabu-search-dependant
     protected int maxIteration = 1000, maxTabuSize = 10;
     protected SolutionCandidate sCandidate, bestCandidate, s, sBest;
-    protected ArrayList<SolutionCandidate> tabuList = new ArrayList<>();
-    protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList<>();
+    protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
+    protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
+    
+    //specific-problem-dependant
+    protected ArrayList<Node> customersList = new ArrayList();
+    protected Node depotNode;
+    protected ArrayList<Vehicle> vehicleList = new ArrayList();
 
     public TabuSearch(int maxIteration) {
 
@@ -86,19 +89,44 @@ public class TabuSearch {
     protected SolutionCandidate generateInitialSolution() {
 
         int routedCustomers = 0;
-        // We define an empty route that starts at the depot
-        
+        SolutionCandidate initialSolution = new SolutionCandidate(); 
+        Vehicle currentVehicle;
+        Node nearestCustomer;
         
         while (customersList.size() - routedCustomers == 0){
             
+            Route r = new Route(this.depotNode);
             
+            currentVehicle = getAvailableVehicle();
             
-            
+            while(currentVehicle.getCapacity(r) > 0) {
+                nearestCustomer = findNearestCustomer(currentVehicle);
+                
+                if(nearestCustomer == null) {
+                    break;
+                }
+                
+                if( currentVehicle.getCapacity(r) > nearestCustomer.getDemand() ){
+                    r.addNode(nearestCustomer);                    
+                    routedCustomers ++; 
+                }
+                               
+            }
+           
+            initialSolution.addRoute(r);
+                   
         } //until all customers are assigned a route
         
-        
-        return new SolutionCandidate();
+        return initialSolution;
 
+    }
+    
+    protected Node findNearestCustomer(Vehicle v) {
+        return this.customersList.get(0);
+    }
+    
+    protected Vehicle getAvailableVehicle() {
+        return this.vehicleList.get(0);
     }
 
     protected boolean stoppingCondition(int iteration) {
