@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class TabuSearch {
     //tabu-search-dependant
     protected int maxIteration = 1000, maxTabuSize = 10;
-    protected SolutionCandidate sCandidate, bestCandidate, s, sBest;
+    protected SolutionCandidate sCandidate, bestCandidate, sBest;
     protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
     protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
 
@@ -33,7 +33,7 @@ public class TabuSearch {
         int iteration = 0;
 
         //generate a optimize initial solutioncandidate
-        sCandidate = generateInitialSolution();
+        sBest = sCandidate = generateInitialSolution();
 
         while (! this.stoppingCondition(iteration)) {
 
