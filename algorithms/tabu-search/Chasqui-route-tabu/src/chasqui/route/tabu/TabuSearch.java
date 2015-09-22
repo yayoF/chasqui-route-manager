@@ -99,6 +99,10 @@ public class TabuSearch {
 
             currentVehicle = getAvailableVehicle();
 
+            if( currentVehicle == null ) {
+                break;
+            }
+
             while(currentVehicle.getCapacity(r) > 0) {
                 nearestCustomer = findNearestCustomer(currentVehicle);
 
