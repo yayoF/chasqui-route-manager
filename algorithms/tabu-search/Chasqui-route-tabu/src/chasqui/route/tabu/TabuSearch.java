@@ -11,13 +11,13 @@ import java.util.ArrayList;
  *
  * @author Joca
  */
-public class TabuSearch { 
+public class TabuSearch {
     //tabu-search-dependant
     protected int maxIteration = 1000, maxTabuSize = 10;
     protected SolutionCandidate sCandidate, bestCandidate, s, sBest;
     protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
     protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
-    
+
     //specific-problem-dependant
     protected ArrayList<Node> customersList = new ArrayList();
     protected Node depotNode;
@@ -36,7 +36,7 @@ public class TabuSearch {
         sCandidate = generateInitialSolution();
 
         while (! this.stoppingCondition(iteration)) {
-            
+
             sNeighborhood = generateNeighborhood(sCandidate);
 
             //obtain best candidate in the neighborhood of solutions generated
@@ -76,55 +76,55 @@ public class TabuSearch {
 
     protected ArrayList<SolutionCandidate> generateNeighborhood(SolutionCandidate sCandidate) {
 
-        
-        
+
+
         return new ArrayList<SolutionCandidate>();
-        
-        
-        
-        
+
+
+
+
 
     }
 
     protected SolutionCandidate generateInitialSolution() {
 
         int routedCustomers = 0;
-        SolutionCandidate initialSolution = new SolutionCandidate(); 
+        SolutionCandidate initialSolution = new SolutionCandidate();
         Vehicle currentVehicle;
         Node nearestCustomer;
-        
+
         while (customersList.size() - routedCustomers == 0){
-            
+
             Route r = new Route(this.depotNode);
-            
+
             currentVehicle = getAvailableVehicle();
-            
+
             while(currentVehicle.getCapacity(r) > 0) {
                 nearestCustomer = findNearestCustomer(currentVehicle);
-                
+
                 if(nearestCustomer == null) {
                     break;
                 }
-                
+
                 if( currentVehicle.getCapacity(r) > nearestCustomer.getDemand() ){
-                    r.addNode(nearestCustomer);                    
-                    routedCustomers ++; 
+                    r.addNode(nearestCustomer);
+                    routedCustomers ++;
                 }
-                               
+
             }
-           
+
             initialSolution.addRoute(r);
-                   
+
         } //until all customers are assigned a route
-        
+
         return initialSolution;
 
     }
-    
+
     protected Node findNearestCustomer(Vehicle v) {
         return this.customersList.get(0);
     }
-    
+
     protected Vehicle getAvailableVehicle() {
         return this.vehicleList.get(0);
     }
