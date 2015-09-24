@@ -52,12 +52,15 @@ public class TabuSearch {
             //evaluate best candidate obtained this interation
             if( bestCandidate.fitness() > sBest.fitness() ) {
                 sBest = bestCandidate;
+            } else {
+                //not exist a better solution 
+                iteration ++;
             }
-
+            
             //update Tabu List
             addCandidateTabuList(bestCandidate);
 
-            iteration ++;
+            
 
         }
 
@@ -76,14 +79,8 @@ public class TabuSearch {
 
     protected ArrayList<SolutionCandidate> generateNeighborhood(SolutionCandidate sCandidate) {
 
-
-
+                
         return new ArrayList<SolutionCandidate>();
-
-
-
-
-
     }
 
     protected SolutionCandidate generateInitialSolution() {
