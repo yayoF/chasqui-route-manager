@@ -13,9 +13,17 @@ import java.util.ArrayList;
  */
 public class SolutionCandidate {
     
-    private ArrayList<Route> routes = new ArrayList<>();
+    private ArrayList<Route> routes;
     
+    public SolutionCandidate() {
+        this.routes = new ArrayList();
+    }
     
+    public SolutionCandidate SolutionCandidate(SolutionCandidate s) {
+        SolutionCandidate c = new SolutionCandidate();
+        
+        return c;
+    }
             
     public int fitness() 
     {

@@ -15,7 +15,6 @@ public class ChasquiRouteTabu {
      */
     public static void main(String[] args) {
  
-
         TabuSearch chasquiOracle = new TabuSearch(0);
         
         chasquiOracle.execute();
