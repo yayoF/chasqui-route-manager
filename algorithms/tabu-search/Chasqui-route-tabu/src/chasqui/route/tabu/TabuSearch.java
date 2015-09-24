@@ -5,6 +5,7 @@
  */
 package chasqui.route.tabu;
 
+import chasqui.route.tabu.Operators.NeighborGenerator;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,8 @@ public class TabuSearch {
     protected SolutionCandidate sCandidate, bestCandidate, sBest;
     protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
     protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
-
+    protected ArrayList<NeighborGenerator> tabuoOperators = new ArrayList();
+    
     //specific-problem-dependant
     protected ArrayList<Node> customersList = new ArrayList();
     protected Node depotNode;
@@ -78,9 +80,15 @@ public class TabuSearch {
     }
 
     protected ArrayList<SolutionCandidate> generateNeighborhood(SolutionCandidate sCandidate) {
-
+        
+        ArrayList<SolutionCandidate> neighbors  = new ArrayList(); 
+    
+        for (NeighborGenerator operator: tabuoOperators) {
+            SolutionCandidate neighbor = operator.generateNeighbor(sCandidate);
+            neighbors.add(neighbor);
+        }
                 
-        return new ArrayList<SolutionCandidate>();
+        return neighbors;
     }
 
     protected SolutionCandidate generateInitialSolution() {
