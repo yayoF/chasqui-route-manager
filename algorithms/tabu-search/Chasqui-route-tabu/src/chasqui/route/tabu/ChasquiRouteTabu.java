@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package chasqui.route.tabu;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author Joca
@@ -18,34 +21,11 @@ public class ChasquiRouteTabu {
           Node a = new Node(1, 0, 0, 0);
           Node b = new Node(2, 0, 0, 0);
           Route r = new Route(a);
-          Route r2 = new Route(a);
           r.addNode(b);
           SolutionCandidate s = new SolutionCandidate();
           s.addRoute(r);
-         
-        
-        
-        SolutionCandidate t = new SolutionCandidate(s);
-        
-        t.addRoute(r2);
-        for (Route route : s.getRoutes()) {
-            for (Node node : route.getNodeList()) {
-                System.out.print(node.getId() + " - ");
-            }
-            System.out.println("");
-        }
-        
-        
-        
-        for (Route route : t.getRoutes()) {
-            for (Node node : route.getNodeList()) {
-                System.out.print(node.getId() + " - ");
-            }
-            System.out.println("");
-        }
-          
-          
-        
+             
+       
 //        TabuSearch chasquiOracle = new TabuSearch(0);
 //        
 //        chasquiOracle.execute();

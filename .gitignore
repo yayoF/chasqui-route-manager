@@ -43,3 +43,5 @@ algorithms/tabu-search/Chasqui-route-tabu/.nb-gradle/
 /gui/simple-route-manager-gui/dist/
 /algorithms/tabu-search/Utils/nbproject/private/
 
+/algorithms/tabu-search/Utils/build/
+/algorithms/tabu-search/Utils/dist/
