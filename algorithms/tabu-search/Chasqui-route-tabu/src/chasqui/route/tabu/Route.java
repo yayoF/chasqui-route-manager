@@ -22,17 +22,21 @@ public class Route {
         this.demand = 0;
     }
     
+    public Route(Route r) {
+        this.setNodeList(r.getNodeList());
+    }
+    
     public int getDemand() {
         return demand;
     }
     
     public Node getLastAddedNode(){
-        int positionlastAdded = nodeList.size() - 1;
-        return nodeList.get(positionlastAdded);
+        int positionlastAdded = getNodeList().size() - 1;
+        return getNodeList().get(positionlastAdded);
     }
     
     public void addNode(Node n) {
-        this.nodeList.add(this.getNodeList().size() - 1, n);
+        this.getNodeList().add(this.getNodeList().size() - 1, n);
         this.setDemand(this.getDemand() + n.getDemand());
     }
 

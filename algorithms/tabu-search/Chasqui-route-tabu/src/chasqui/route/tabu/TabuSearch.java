@@ -141,8 +141,15 @@ public class TabuSearch {
             return null;
         }
         ArrayList<Node> hornyCustomers = getHornyCustomers(customersList, visitedCustomers);
+        if (hornyCustomers != null){
+            if (hornyCustomers.size() == 1){
+                return hornyCustomers.get(0);
+            }
+        }
         
-        Node chosenCustomer = dummyPicker(candidateA, candidateB, currPos);
+        
+        
+        Node chosenCustomer = dummyPicker(hornyCustomers.get(0), hornyCustomers.get(), currPos);
             
 
         
