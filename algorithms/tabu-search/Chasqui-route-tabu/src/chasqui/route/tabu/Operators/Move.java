@@ -15,7 +15,10 @@ public class Move implements NeighborGenerator{
 
     @Override
     public SolutionCandidate generateNeighbor(SolutionCandidate s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        SolutionCandidate neighbor = new SolutionCandidate(s);
+        
+        return neighbor;
     }
     
 }
