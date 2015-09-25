@@ -8,6 +8,7 @@ package chasqui.route.tabu;
 import chasqui.route.tabu.Operators.NeighborGenerator;
 import java.util.ArrayList;
 import javafx.scene.input.KeyCode;
+import utils.Random;
 
 /**
  *
@@ -147,17 +148,12 @@ public class TabuSearch {
             }
         }
         
+        int rIndA = Random.getRandomInt(0, hornyCustomers.size()-1);
+        int rIndB = Random.getRandomIntDiff(0, hornyCustomers.size()-1, rIndA);
         
+        Node chosenCustomer = dummyPicker(hornyCustomers.get(rIndA), hornyCustomers.get(rIndB), currPos);
         
-        Node chosenCustomer = dummyPicker(hornyCustomers.get(0), hornyCustomers.get(), currPos);
-            
-
-        
-            
-        
-        return chosenCustomer;
-        
-
+        return chosenCustomer; 
     }
 
     protected Vehicle getAvailableVehicle() {
@@ -183,10 +179,12 @@ public class TabuSearch {
     private Node dummyPicker(Node candidateA, Node candidateB, Position currPos) {
         
         Node chosenOne = null;
-        
-        
-        
-        return chosenOne;
+        if (  (candidateA.getPos().distance(currPos)) < (candidateB.getPos().distance(currPos))  ){
+            return candidateA;
+        }else{
+            return candidateB;
+        }
+        //returns closest candidate to current position
     }
     
     private ArrayList<Node> getHornyCustomers(ArrayList<Node> customersList, ArrayList<Integer> visitedCustomers) {
