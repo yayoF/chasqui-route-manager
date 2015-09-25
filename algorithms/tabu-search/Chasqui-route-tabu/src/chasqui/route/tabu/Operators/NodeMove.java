@@ -42,8 +42,9 @@ public class NodeMove implements NeighborGenerator{
             }
         }
 
-        //relocates n1 before n2
-
+        //relocates n1 before n2                
+        Node c = route1.getNodeList().remove(n1);  
+        route2.getNodeList().add(n2, c);
 
         return neighbor;
     }
