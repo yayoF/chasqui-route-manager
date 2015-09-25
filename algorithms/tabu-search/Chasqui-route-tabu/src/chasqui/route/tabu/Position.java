@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package chasqui.route.tabu;
+import utils.Constants;
 
 /**
  *
@@ -54,10 +55,14 @@ public class Position {
     
     
     public int distance(Position y) {
-        return 0;
+ 
+        int xDistance = (this.coordX - y.coordX)*Constants.blockDistance;
+        int yDistance = (this.coordY - y.coordY)*Constants.blockDistance;
+        
+        return Math.abs(xDistance) + Math.abs(yDistance);
     }
     
     public static int distanceFromTwoPoints(Position x, Position y) {
-        return 0;
+        return x.distance(y);
     }
 }
