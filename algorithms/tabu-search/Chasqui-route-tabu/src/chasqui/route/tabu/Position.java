@@ -53,5 +53,11 @@ public class Position {
     }
     
     
+    public int distance(Position y) {
+        return 0;
+    }
     
+    public static int distanceFromTwoPoints(Position x, Position y) {
+        return 0;
+    }
 }

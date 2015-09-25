@@ -20,7 +20,7 @@ public class NodeMove implements NeighborGenerator{
         int randIndx1 = Random.getRandomInt(0, s.getRoutes().size());
         int randIndx2 = Random.getRandomIntDiff(0, s.getRoutes().size(), randIndx1);
         
-        
+       
         
         
         return neighbor;
