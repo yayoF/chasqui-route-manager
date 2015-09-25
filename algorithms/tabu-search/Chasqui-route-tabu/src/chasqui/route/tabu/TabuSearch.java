@@ -7,6 +7,7 @@ package chasqui.route.tabu;
 
 import chasqui.route.tabu.Operators.NeighborGenerator;
 import java.util.ArrayList;
+import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -136,30 +137,27 @@ public class TabuSearch {
         Position currPos = r.getLastAddedNode().getPos();
         boolean customerHasBeenVisited = false;
         
-        for (int i=0; i<customersList.size(); i++){
-            
-            for (int m=0; m<visitedCustomers.size(); m++){
-                if ( customersList.get(i).getId() == visitedCustomers.get(m) ){
-                    customerHasBeenVisited = true;
-                    break;
-                }
-            }
-            
-            if (customerHasBeenVisited){
-                continue;
-            }else{
-                
-                //compare distances between customer and vehicle
-                
-                
-            }
-                
+        if (r.getNodeList().size() == (visitedCustomers.size() + 2) ){
+            return null;
         }
+        ArrayList<Node> hornyCustomers = getHornyCustomers(customersList, visitedCustomers);
+        if (hornyCustomers != null){
+            if (hornyCustomers.size() == 1){
+                return hornyCustomers.get(0);
+            }
+        }
+        
+        
+        
+        Node chosenCustomer = dummyPicker(hornyCustomers.get(0), hornyCustomers.get(), currPos);
+            
+
+        
             
         
+        return chosenCustomer;
         
-        
-        return this.customersList.get(0);
+
     }
 
     protected Vehicle getAvailableVehicle() {
@@ -182,4 +180,33 @@ public class TabuSearch {
         return sBest;
     }
 
+    private Node dummyPicker(Node candidateA, Node candidateB, Position currPos) {
+        
+        Node chosenOne = null;
+        
+        
+        
+        return chosenOne;
+    }
+    
+    private ArrayList<Node> getHornyCustomers(ArrayList<Node> customersList, ArrayList<Integer> visitedCustomers) {
+        
+        ArrayList<Node> hornyOnes = null;
+        boolean foundCustomer = false;
+        
+        for (int i=1; i< customersList.size(); i++){ //customersList includes the customer representing de Depot (pos 0)
+            for (int j=0; j<visitedCustomers.size(); j++){
+                if (customersList.get(i).getId() == visitedCustomers.get(j)){
+                    foundCustomer = true;
+                }
+            }
+            
+            if (!foundCustomer) {
+                hornyOnes.add(customersList.get(i));
+            }
+            
+        }
+        return hornyOnes;
+    }
+    
 }
