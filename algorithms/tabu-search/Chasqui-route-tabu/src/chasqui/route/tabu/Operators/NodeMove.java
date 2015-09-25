@@ -11,16 +11,17 @@ import utils.Random;
  *
  * @author Joca
  */
-public class Move implements NeighborGenerator{
+public class NodeMove implements NeighborGenerator{
 
     @Override
     public SolutionCandidate generateNeighbor(SolutionCandidate s) {
-        int randIndx1, randIndx2;
         
         SolutionCandidate neighbor = new SolutionCandidate(s);
-              
-        randIndx1 = Random.getRandomInt(0, s.getRoutes().size());
-        randIndx2 = Random.getRandomIntDiff(0, s.getRoutes().size(), randIndx1);
+        int randIndx1 = Random.getRandomInt(0, s.getRoutes().size());
+        int randIndx2 = Random.getRandomIntDiff(0, s.getRoutes().size(), randIndx1);
+        
+        
+        
         
         return neighbor;
     } 
