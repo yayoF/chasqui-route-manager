@@ -19,10 +19,13 @@ public class SolutionCandidate {
         this.routes = new ArrayList();
     }
     
-    public SolutionCandidate SolutionCandidate(SolutionCandidate s) {
-        SolutionCandidate c = new SolutionCandidate();
+    public SolutionCandidate(SolutionCandidate s) {
+        this.routes = new ArrayList();
         
-        return c;
+        for (Route r : s.getRoutes()) {
+            Route cproute = new Route(r);
+            this.addRoute(cproute);
+        }
     }
             
     public int fitness() 
