@@ -30,7 +30,7 @@ public class NodeMove implements NeighborGenerator{
         Route route2 = neighbor.getRoutes().get(randIndx2);
         int n1 = 0, n2 = 0, minDist = Integer.MAX_VALUE;
         int currentDistance;
-        
+
         for (int i = 0; i < route1.getNodeList().size(); i++) {
             for (int j = 0; j < route2.getNodeList().size(); j++) {
                 currentDistance = route1.getNodeList().get(i).getPos().distance(route2.getNodeList().get(j).getPos());
@@ -42,8 +42,8 @@ public class NodeMove implements NeighborGenerator{
             }
         }
 
-        //relocates n1 before n2                
-        Node c = route1.getNodeList().remove(n1);  
+        //relocates n1 before n2
+        Node c = route1.getNodeList().remove(n1);
         route2.getNodeList().add(n2, c);
 
         return neighbor;
