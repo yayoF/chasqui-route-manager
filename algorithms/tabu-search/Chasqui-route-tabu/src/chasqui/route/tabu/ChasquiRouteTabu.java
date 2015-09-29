@@ -31,69 +31,66 @@ public class ChasquiRouteTabu {
         BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
         String strLine;
-     
+
         strLine = br.readLine();
-        
+
         int nVehicleTypes = Integer.parseInt(strLine);
         int nVehicles, capacity;
         ArrayList<Vehicle> vehicleList = new ArrayList();
         String[] split;
-        
+
         for (int i = 0; i < nVehicleTypes; i++) {
             strLine = br.readLine();
             split = strLine.split("\\s");
             nVehicles = Integer.parseInt(split[0]);
             capacity = Integer.parseInt(split[1]);
-            
+
             for (int j = 0; j < nVehicles; j++) {
                 vehicleList.add(new Vehicle(capacity));
             }
-  
+
         }
-        
-        strLine = br.readLine(); 
-        
+
+        strLine = br.readLine();
+
         int nNodes = Integer.parseInt(strLine);
         ArrayList<Node> customers = new ArrayList();
-        
-        strLine = br.readLine(); 
+
+        strLine = br.readLine();
         split = strLine.split("\\s");
-        
-        Node depot = new Node(0, Integer.parseInt(split[0]), Integer.parseInt(split[1]), 0);
-        
-        customers.add(depot);
-        
+
+        Node depotNode = new Node(0, Integer.parseInt(split[0]), Integer.parseInt(split[1]), 0);
+
         int x, y, demand;
         for (int i = 0; i < nNodes; i++) {
-            strLine = br.readLine(); 
+            strLine = br.readLine();
             split = strLine.split("\\s");
             x = Integer.parseInt(split[0]);
             y = Integer.parseInt(split[1]);
             demand = Integer.parseInt(split[2]);
-            
+
             customers.add(new Node(i, x, y, demand));
-            
 
         }
-                
-        
-       
-
         br.close();
 
 
-//        TabuSearch chasquiOracle = new TabuSearch(0);
-//
-//        chasquiOracle.execute();
-//
-//        SolutionCandidate initialSolution = chasquiOracle.getSolution();
-//
-//        for (Route route : initialSolution.getRoutes()) {
-//            for (Node node : route.getNodeList()) {
-//                System.out.print(node.getId() + " - ");
-//            }
-//            System.out.println("");
-//        }
+        TabuSearch chasquiOracle = new TabuSearch(1000);
+        chasquiOracle.setCustomersList(customers);
+        chasquiOracle.setDepotNode(depotNode);
+        chasquiOracle.setVehicleList(vehicleList);
+        
+
+        chasquiOracle.execute();
+
+        SolutionCandidate initialSolution = chasquiOracle.getSolution();
+
+        for (Route route : initialSolution.getRoutes()) {
+            for (Node node : route.getNodeList()) {
+                System.out.print(node.getId() + " - ");
+            }
+            System.out.println("");
+        }
         // TODO code application logic here
     }
 

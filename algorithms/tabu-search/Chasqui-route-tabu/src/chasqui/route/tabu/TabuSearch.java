@@ -15,16 +15,17 @@ import utils.Random;
  * @author Joca
  */
 public class TabuSearch {
+    //tabu-search-dependant
     private int maxIteration = 1000;
+    //tabu-search-dependant
     private int maxTabuSize = 10;
-    private SolutionCandidate sCandidate;
+    protected SolutionCandidate sCandidate, bestCandidate;
+    private SolutionCandidate sBest;
+    protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
+    protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
+    protected ArrayList<NeighborGenerator> tabuoOperators = new ArrayList();
     
     //specific-problem-dependant
-    private SolutionCandidate bestCandidate;
-    private SolutionCandidate sBest;
-    private ArrayList<SolutionCandidate> tabuList = new ArrayList();
-    private ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
-    private ArrayList<NeighborGenerator> tabuoOperators = new ArrayList();
     private ArrayList<Node> customersList = new ArrayList();
     private Node depotNode;
     private ArrayList<Vehicle> vehicleList = new ArrayList();
@@ -40,32 +41,32 @@ public class TabuSearch {
         boolean b = false;
 
         //generate a optimize initial solutioncandidate
-        setsBest(sCandidate = generateInitialSolution());
+        sBest = sCandidate = generateInitialSolution();
 
         while (b) {
 
-            setsNeighborhood(generateNeighborhood(getsCandidate()));
+            sNeighborhood = generateNeighborhood(sCandidate);
 
             //obtain best candidate in the neighborhood of solutions generated
-            for (SolutionCandidate actualNeighbor : getsNeighborhood()) {
+            for (SolutionCandidate actualNeighbor : sNeighborhood) {
                 if( (! this.tabuList.contains(actualNeighbor) ) &&
-                        (actualNeighbor.fitness() > getBestCandidate().fitness() ) ) {
+                        (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
 
-                    setBestCandidate(actualNeighbor);
+                    bestCandidate = actualNeighbor;
 
                 }
             }
 
             //evaluate best candidate obtained this interation
-            if( getBestCandidate().fitness() > getsBest().fitness() ) {
-                setsBest(getBestCandidate());
+            if( bestCandidate.fitness() > getsBest().fitness() ) {
+                sBest = bestCandidate;
             } else {
                 //not exist a better solution 
                 iteration ++;
             }
             
             //update Tabu List
-            addCandidateTabuList(getBestCandidate());
+            addCandidateTabuList(bestCandidate);
 
             
 
@@ -75,10 +76,10 @@ public class TabuSearch {
 
     protected void addCandidateTabuList(SolutionCandidate s) {
 
-        this.getTabuList().add(s);
+        this.tabuList.add(s);
 
-        if( this.getTabuList().size() > this.getMaxTabuSize() ) {
-            getTabuList().remove(0);
+        if( this.tabuList.size() > this.getMaxTabuSize() ) {
+            tabuList.remove(0);
         }
 
 
@@ -88,7 +89,7 @@ public class TabuSearch {
         
         ArrayList<SolutionCandidate> neighbors  = new ArrayList(); 
     
-        for (NeighborGenerator operator: getTabuoOperators()) {
+        for (NeighborGenerator operator: tabuoOperators) {
             SolutionCandidate neighbor = operator.generateNeighbor(sCandidate);
             neighbors.add(neighbor);
         }
@@ -239,87 +240,10 @@ public class TabuSearch {
     }
 
     /**
-     * @return the sCandidate
-     */
-    public SolutionCandidate getsCandidate() {
-        return sCandidate;
-    }
-
-    /**
-     * @param sCandidate the sCandidate to set
-     */
-    public void setsCandidate(SolutionCandidate sCandidate) {
-        this.sCandidate = sCandidate;
-    }
-
-    /**
-     * @return the bestCandidate
-     */
-    public SolutionCandidate getBestCandidate() {
-        return bestCandidate;
-    }
-
-    /**
-     * @param bestCandidate the bestCandidate to set
-     */
-    public void setBestCandidate(SolutionCandidate bestCandidate) {
-        this.bestCandidate = bestCandidate;
-    }
-
-    /**
      * @return the sBest
      */
     public SolutionCandidate getsBest() {
         return sBest;
-    }
-
-    /**
-     * @param sBest the sBest to set
-     */
-    public void setsBest(SolutionCandidate sBest) {
-        this.sBest = sBest;
-    }
-
-    /**
-     * @return the tabuList
-     */
-    public ArrayList<SolutionCandidate> getTabuList() {
-        return tabuList;
-    }
-
-    /**
-     * @param tabuList the tabuList to set
-     */
-    public void setTabuList(ArrayList<SolutionCandidate> tabuList) {
-        this.tabuList = tabuList;
-    }
-
-    /**
-     * @return the sNeighborhood
-     */
-    public ArrayList<SolutionCandidate> getsNeighborhood() {
-        return sNeighborhood;
-    }
-
-    /**
-     * @param sNeighborhood the sNeighborhood to set
-     */
-    public void setsNeighborhood(ArrayList<SolutionCandidate> sNeighborhood) {
-        this.sNeighborhood = sNeighborhood;
-    }
-
-    /**
-     * @return the tabuoOperators
-     */
-    public ArrayList<NeighborGenerator> getTabuoOperators() {
-        return tabuoOperators;
-    }
-
-    /**
-     * @param tabuoOperators the tabuoOperators to set
-     */
-    public void setTabuoOperators(ArrayList<NeighborGenerator> tabuoOperators) {
-        this.tabuoOperators = tabuoOperators;
     }
 
     /**
