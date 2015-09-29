@@ -104,13 +104,12 @@ public class TabuSearch {
         Vehicle currentVehicle;
         Node nearestCustomer;
         ArrayList<Integer> visitedCustomers = new ArrayList();
-                
-        while (getCustomersList().size() - routedCustomers == 0){
+            
+        while (getCustomersList().size() - routedCustomers > 0){
 
             Route r = new Route(this.getDepotNode());
-            
             currentVehicle = getAvailableVehicle();
-
+            
             if( currentVehicle == null ) {
                 break;
             }
@@ -133,6 +132,8 @@ public class TabuSearch {
 
         } //until all customers are assigned a route
 
+        
+        
         return initialSolution;
 
     }
@@ -161,8 +162,9 @@ public class TabuSearch {
     }
 
     protected Vehicle getAvailableVehicle() {
-        for (Vehicle vehicle : this.getVehicleList()) {
-            if(vehicle.isInUse()) {
+        
+        for (Vehicle vehicle : this.getVehicleList()) {            
+            if(! vehicle.isInUse()) {
                 vehicle.setInUse(true);
                 return vehicle;
             }

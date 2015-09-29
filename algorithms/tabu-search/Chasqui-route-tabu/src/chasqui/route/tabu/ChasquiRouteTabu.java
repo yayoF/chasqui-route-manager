@@ -85,7 +85,7 @@ public class ChasquiRouteTabu {
 
         SolutionCandidate initialSolution = chasquiOracle.getSolution();
         
-        System.out.println(initialSolution.getRoutes().size());
+        //System.out.println(initialSolution.getRoutes().size());
 
         for (Route route : initialSolution.getRoutes()) {
             for (Node node : route.getNodeList()) {
