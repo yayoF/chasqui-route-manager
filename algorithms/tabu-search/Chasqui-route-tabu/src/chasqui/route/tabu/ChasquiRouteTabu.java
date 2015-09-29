@@ -5,6 +5,7 @@
  */
 package chasqui.route.tabu;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -23,8 +24,16 @@ public class ChasquiRouteTabu {
           Route r = new Route(a);
           r.addNode(b);
           SolutionCandidate s = new SolutionCandidate();
+          SolutionCandidate s2 = new SolutionCandidate();
           s.addRoute(r);
 
+           ArrayList<SolutionCandidate> tabuList = new ArrayList();
+           tabuList.add(s);
+           
+           System.out.println(tabuList.contains(s));
+           System.out.println(tabuList.contains(s2));
+          
+          
 
 //        TabuSearch chasquiOracle = new TabuSearch(0);
 //
