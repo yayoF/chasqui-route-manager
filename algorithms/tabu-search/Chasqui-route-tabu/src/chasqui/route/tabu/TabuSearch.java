@@ -110,13 +110,17 @@ public class TabuSearch {
             Route r = new Route(this.getDepotNode());
             currentVehicle = getAvailableVehicle();
             
+           
+            
             if( currentVehicle == null ) {
                 break;
+            } else {
+                currentVehicle.setInUse(true);
             }
 
             while(currentVehicle.getCapacity(r) > 0) {
                 nearestCustomer = findNearestCustomer(currentVehicle, r, visitedCustomers);
-
+ 
                 if(nearestCustomer == null) {
                     break;
                 }
@@ -140,12 +144,12 @@ public class TabuSearch {
 
     protected Node findNearestCustomer(Vehicle v, Route r, ArrayList<Integer> visitedCustomers) {
         
-        Position currPos = r.getLastAddedNode().getPos();
-        boolean customerHasBeenVisited = false;
+        Position currPos = r.getLastAddedNode().getPos();        
         
         if (r.getNodeList().size() == (visitedCustomers.size() + 2) ){
             return null;
         }
+        
         ArrayList<Node> hornyCustomers = getHornyCustomers(getCustomersList(), visitedCustomers);
         if (hornyCustomers != null){
             if (hornyCustomers.size() == 1){
@@ -157,6 +161,7 @@ public class TabuSearch {
         int rIndB = Random.getRandomIntDiff(0, hornyCustomers.size()-1, rIndA);
         
         Node chosenCustomer = dummyPicker(hornyCustomers.get(rIndA), hornyCustomers.get(rIndB), currPos);
+        
         
         return chosenCustomer; 
     }
