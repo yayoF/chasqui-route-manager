@@ -15,17 +15,19 @@ import utils.Random;
  * @author Joca
  */
 public class TabuSearch {
-    //tabu-search-dependant
-    protected int maxIteration = 1000, maxTabuSize = 10;
-    protected SolutionCandidate sCandidate, bestCandidate, sBest;
-    protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
-    protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
-    protected ArrayList<NeighborGenerator> tabuoOperators = new ArrayList();
+    private int maxIteration = 1000;
+    private int maxTabuSize = 10;
+    private SolutionCandidate sCandidate;
     
     //specific-problem-dependant
-    protected ArrayList<Node> customersList = new ArrayList();
-    protected Node depotNode;
-    protected ArrayList<Vehicle> vehicleList = new ArrayList();
+    private SolutionCandidate bestCandidate;
+    private SolutionCandidate sBest;
+    private ArrayList<SolutionCandidate> tabuList = new ArrayList();
+    private ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
+    private ArrayList<NeighborGenerator> tabuoOperators = new ArrayList();
+    private ArrayList<Node> customersList = new ArrayList();
+    private Node depotNode;
+    private ArrayList<Vehicle> vehicleList = new ArrayList();
 
     public TabuSearch(int maxIteration) {
 
@@ -35,34 +37,35 @@ public class TabuSearch {
 
     public void execute () {
         int iteration = 0;
+        boolean b = false;
 
         //generate a optimize initial solutioncandidate
-        sBest = sCandidate = generateInitialSolution();
+        setsBest(sCandidate = generateInitialSolution());
 
-        while (! this.stoppingCondition(iteration)) {
+        while (b) {
 
-            sNeighborhood = generateNeighborhood(sCandidate);
+            setsNeighborhood(generateNeighborhood(getsCandidate()));
 
             //obtain best candidate in the neighborhood of solutions generated
-            for (SolutionCandidate actualNeighbor : sNeighborhood) {
+            for (SolutionCandidate actualNeighbor : getsNeighborhood()) {
                 if( (! this.tabuList.contains(actualNeighbor) ) &&
-                        (actualNeighbor.fitness() > bestCandidate.fitness() ) ) {
+                        (actualNeighbor.fitness() > getBestCandidate().fitness() ) ) {
 
-                    bestCandidate = actualNeighbor;
+                    setBestCandidate(actualNeighbor);
 
                 }
             }
 
             //evaluate best candidate obtained this interation
-            if( bestCandidate.fitness() > sBest.fitness() ) {
-                sBest = bestCandidate;
+            if( getBestCandidate().fitness() > getsBest().fitness() ) {
+                setsBest(getBestCandidate());
             } else {
                 //not exist a better solution 
                 iteration ++;
             }
             
             //update Tabu List
-            addCandidateTabuList(bestCandidate);
+            addCandidateTabuList(getBestCandidate());
 
             
 
@@ -72,10 +75,10 @@ public class TabuSearch {
 
     protected void addCandidateTabuList(SolutionCandidate s) {
 
-        this.tabuList.add(s);
+        this.getTabuList().add(s);
 
-        if( this.tabuList.size() > this.maxTabuSize ) {
-            tabuList.remove(0);
+        if( this.getTabuList().size() > this.getMaxTabuSize() ) {
+            getTabuList().remove(0);
         }
 
 
@@ -85,7 +88,7 @@ public class TabuSearch {
         
         ArrayList<SolutionCandidate> neighbors  = new ArrayList(); 
     
-        for (NeighborGenerator operator: tabuoOperators) {
+        for (NeighborGenerator operator: getTabuoOperators()) {
             SolutionCandidate neighbor = operator.generateNeighbor(sCandidate);
             neighbors.add(neighbor);
         }
@@ -101,9 +104,9 @@ public class TabuSearch {
         Node nearestCustomer;
         ArrayList<Integer> visitedCustomers = new ArrayList();
         
-        while (customersList.size() - routedCustomers == 0){
+        while (getCustomersList().size() - routedCustomers == 0){
 
-            Route r = new Route(this.depotNode);
+            Route r = new Route(this.getDepotNode());
             
             currentVehicle = getAvailableVehicle();
 
@@ -141,7 +144,7 @@ public class TabuSearch {
         if (r.getNodeList().size() == (visitedCustomers.size() + 2) ){
             return null;
         }
-        ArrayList<Node> hornyCustomers = getHornyCustomers(customersList, visitedCustomers);
+        ArrayList<Node> hornyCustomers = getHornyCustomers(getCustomersList(), visitedCustomers);
         if (hornyCustomers != null){
             if (hornyCustomers.size() == 1){
                 return hornyCustomers.get(0);
@@ -157,7 +160,7 @@ public class TabuSearch {
     }
 
     protected Vehicle getAvailableVehicle() {
-        for (Vehicle vehicle : this.vehicleList) {
+        for (Vehicle vehicle : this.getVehicleList()) {
             if(vehicle.isInUse()) {
                 vehicle.setInUse(true);
                 return vehicle;
@@ -168,12 +171,12 @@ public class TabuSearch {
 
     protected boolean stoppingCondition(int iteration) {
 
-        return iteration >= this.maxIteration;
+        return iteration >= this.getMaxIteration();
 
     }
     
     protected SolutionCandidate getSolution() {
-        return sBest;
+        return getsBest();
     }
 
     private Node dummyPicker(Node candidateA, Node candidateB, Position currPos) {
@@ -205,6 +208,160 @@ public class TabuSearch {
             
         }
         return hornyOnes;
+    }
+
+    /**
+     * @return the maxIteration
+     */
+    public int getMaxIteration() {
+        return maxIteration;
+    }
+
+    /**
+     * @param maxIteration the maxIteration to set
+     */
+    public void setMaxIteration(int maxIteration) {
+        this.maxIteration = maxIteration;
+    }
+
+    /**
+     * @return the maxTabuSize
+     */
+    public int getMaxTabuSize() {
+        return maxTabuSize;
+    }
+
+    /**
+     * @param maxTabuSize the maxTabuSize to set
+     */
+    public void setMaxTabuSize(int maxTabuSize) {
+        this.maxTabuSize = maxTabuSize;
+    }
+
+    /**
+     * @return the sCandidate
+     */
+    public SolutionCandidate getsCandidate() {
+        return sCandidate;
+    }
+
+    /**
+     * @param sCandidate the sCandidate to set
+     */
+    public void setsCandidate(SolutionCandidate sCandidate) {
+        this.sCandidate = sCandidate;
+    }
+
+    /**
+     * @return the bestCandidate
+     */
+    public SolutionCandidate getBestCandidate() {
+        return bestCandidate;
+    }
+
+    /**
+     * @param bestCandidate the bestCandidate to set
+     */
+    public void setBestCandidate(SolutionCandidate bestCandidate) {
+        this.bestCandidate = bestCandidate;
+    }
+
+    /**
+     * @return the sBest
+     */
+    public SolutionCandidate getsBest() {
+        return sBest;
+    }
+
+    /**
+     * @param sBest the sBest to set
+     */
+    public void setsBest(SolutionCandidate sBest) {
+        this.sBest = sBest;
+    }
+
+    /**
+     * @return the tabuList
+     */
+    public ArrayList<SolutionCandidate> getTabuList() {
+        return tabuList;
+    }
+
+    /**
+     * @param tabuList the tabuList to set
+     */
+    public void setTabuList(ArrayList<SolutionCandidate> tabuList) {
+        this.tabuList = tabuList;
+    }
+
+    /**
+     * @return the sNeighborhood
+     */
+    public ArrayList<SolutionCandidate> getsNeighborhood() {
+        return sNeighborhood;
+    }
+
+    /**
+     * @param sNeighborhood the sNeighborhood to set
+     */
+    public void setsNeighborhood(ArrayList<SolutionCandidate> sNeighborhood) {
+        this.sNeighborhood = sNeighborhood;
+    }
+
+    /**
+     * @return the tabuoOperators
+     */
+    public ArrayList<NeighborGenerator> getTabuoOperators() {
+        return tabuoOperators;
+    }
+
+    /**
+     * @param tabuoOperators the tabuoOperators to set
+     */
+    public void setTabuoOperators(ArrayList<NeighborGenerator> tabuoOperators) {
+        this.tabuoOperators = tabuoOperators;
+    }
+
+    /**
+     * @return the customersList
+     */
+    public ArrayList<Node> getCustomersList() {
+        return customersList;
+    }
+
+    /**
+     * @param customersList the customersList to set
+     */
+    public void setCustomersList(ArrayList<Node> customersList) {
+        this.customersList = customersList;
+    }
+
+    /**
+     * @return the depotNode
+     */
+    public Node getDepotNode() {
+        return depotNode;
+    }
+
+    /**
+     * @param depotNode the depotNode to set
+     */
+    public void setDepotNode(Node depotNode) {
+        this.depotNode = depotNode;
+    }
+
+    /**
+     * @return the vehicleList
+     */
+    public ArrayList<Vehicle> getVehicleList() {
+        return vehicleList;
+    }
+
+    /**
+     * @param vehicleList the vehicleList to set
+     */
+    public void setVehicleList(ArrayList<Vehicle> vehicleList) {
+        this.vehicleList = vehicleList;
     }
     
 }
