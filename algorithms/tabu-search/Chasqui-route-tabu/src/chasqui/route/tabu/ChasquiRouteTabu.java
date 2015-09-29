@@ -37,10 +37,11 @@ public class ChasquiRouteTabu {
         int nVehicleTypes = Integer.parseInt(strLine);
         int nVehicles, capacity;
         ArrayList<Vehicle> vehicleList = new ArrayList();
+        String[] split;
         
         for (int i = 0; i < nVehicleTypes; i++) {
             strLine = br.readLine();
-            String[] split = strLine.split("\\s");
+            split = strLine.split("\\s");
             nVehicles = Integer.parseInt(split[0]);
             capacity = Integer.parseInt(split[1]);
             
@@ -50,9 +51,31 @@ public class ChasquiRouteTabu {
   
         }
         
-       System.out.println(vehicleList.size());
+        strLine = br.readLine(); 
         
+        int nNodes = Integer.parseInt(strLine);
+        ArrayList<Node> customers = new ArrayList();
         
+        strLine = br.readLine(); 
+        split = strLine.split("\\s");
+        
+        Node depot = new Node(0, Integer.parseInt(split[0]), Integer.parseInt(split[1]), 0);
+        
+        customers.add(depot);
+        
+        int x, y, demand;
+        for (int i = 0; i < nNodes; i++) {
+            strLine = br.readLine(); 
+            split = strLine.split("\\s");
+            x = Integer.parseInt(split[0]);
+            y = Integer.parseInt(split[1]);
+            demand = Integer.parseInt(split[2]);
+            
+            customers.add(new Node(i, x, y, demand));
+            
+
+        }
+                
         
        
 
