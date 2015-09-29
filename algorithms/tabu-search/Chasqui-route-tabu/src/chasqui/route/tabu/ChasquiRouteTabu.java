@@ -5,7 +5,14 @@
  */
 package chasqui.route.tabu;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -17,23 +24,40 @@ public class ChasquiRouteTabu {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
 
-          Node a = new Node(1, 0, 0, 0);
-          Node b = new Node(2, 0, 0, 0);
-          Route r = new Route(a);
-          r.addNode(b);
-          SolutionCandidate s = new SolutionCandidate();
-          SolutionCandidate s2 = new SolutionCandidate();
-          s.addRoute(r);
+        String path = "../../in/data1.txt";
+        FileInputStream fstream = new FileInputStream(path);
+        BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
-           ArrayList<SolutionCandidate> tabuList = new ArrayList();
-           tabuList.add(s);
-           
-           System.out.println(tabuList.contains(s));
-           System.out.println(tabuList.contains(s2));
-          
-          
+        String strLine;
+     
+        strLine = br.readLine();
+        
+        int nVehicleTypes = Integer.parseInt(strLine);
+        int nVehicles, capacity;
+        ArrayList<Vehicle> vehicleList = new ArrayList();
+        
+        for (int i = 0; i < nVehicleTypes; i++) {
+            strLine = br.readLine();
+            String[] split = strLine.split("\\s");
+            nVehicles = Integer.parseInt(split[0]);
+            capacity = Integer.parseInt(split[1]);
+            
+            for (int j = 0; j < nVehicles; j++) {
+                vehicleList.add(new Vehicle(capacity));
+            }
+  
+        }
+        
+       System.out.println(vehicleList.size());
+        
+        
+        
+       
+
+        br.close();
+
 
 //        TabuSearch chasquiOracle = new TabuSearch(0);
 //

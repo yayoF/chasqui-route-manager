@@ -14,8 +14,9 @@ public class Vehicle {
     private int maxCapacity;
     private boolean inUse;
 
-    public Vehicle() {
+    public Vehicle(int capacity) {
         this.inUse = false;
+        this.maxCapacity = capacity;
     }
     
     /**
