@@ -143,12 +143,13 @@ public class TabuSearch {
         Position currPos = r.getLastAddedNode().getPos();
         boolean customerHasBeenVisited = false;
         
-        if (r.getNodeList().size() == (visitedCustomers.size() + 2) ){
+        if (getCustomersList().size() == (visitedCustomers.size() + 2) ){
             return null;
         }
         ArrayList<Node> hornyCustomers = getHornyCustomers(getCustomersList(), visitedCustomers);
         if (hornyCustomers != null){
             if (hornyCustomers.size() == 1){
+                visitedCustomers.add(hornyCustomers.get(0).getId());
                 return hornyCustomers.get(0);
             }
         }
@@ -158,6 +159,7 @@ public class TabuSearch {
         
         Node chosenCustomer = dummyPicker(hornyCustomers.get(rIndA), hornyCustomers.get(rIndB), currPos);
         
+        visitedCustomers.add(chosenCustomer.getId());
         return chosenCustomer; 
     }
 
