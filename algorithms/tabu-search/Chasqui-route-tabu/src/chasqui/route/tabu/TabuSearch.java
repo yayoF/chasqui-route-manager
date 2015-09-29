@@ -202,10 +202,10 @@ public class TabuSearch {
     
     private ArrayList<Node> getHornyCustomers(ArrayList<Node> customersList, ArrayList<Integer> visitedCustomers) {
         
-        ArrayList<Node> hornyOnes = null;
+        ArrayList<Node> hornyOnes = new ArrayList();
         boolean foundCustomer = false;
         
-        for (int i=1; i< customersList.size(); i++){ //customersList includes the customer representing de Depot (pos 0)
+        for (int i=0; i< customersList.size(); i++){ //customersList includes the customer representing de Depot (pos 0)
             for (int j=0; j<visitedCustomers.size(); j++){
                 if (customersList.get(i).getId() == visitedCustomers.get(j)){
                     foundCustomer = true;
