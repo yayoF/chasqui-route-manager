@@ -104,7 +104,7 @@ public class TabuSearch {
         Vehicle currentVehicle;
         Node nearestCustomer;
         ArrayList<Integer> visitedCustomers = new ArrayList();
-        
+                
         while (getCustomersList().size() - routedCustomers == 0){
 
             Route r = new Route(this.getDepotNode());
