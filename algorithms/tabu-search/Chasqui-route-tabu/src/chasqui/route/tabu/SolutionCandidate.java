@@ -12,27 +12,27 @@ import java.util.ArrayList;
  * @author Joca
  */
 public class SolutionCandidate {
-    
+
     private ArrayList<Route> routes;
-    
+
     public SolutionCandidate() {
         this.routes = new ArrayList();
     }
-    
+
     public SolutionCandidate(SolutionCandidate s) {
         this.routes = new ArrayList();
-        
+
         for (Route r : s.getRoutes()) {
             Route cproute = new Route(r);
             this.addRoute(cproute);
         }
     }
-            
-    public int fitness() 
+
+    public int fitness()
     {
         return 0;
     }
-    
+
     public void addRoute(Route r) {
         this.getRoutes().add(r);
     }
