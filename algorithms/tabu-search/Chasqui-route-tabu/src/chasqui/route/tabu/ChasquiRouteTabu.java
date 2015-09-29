@@ -87,7 +87,7 @@ public class ChasquiRouteTabu {
         
         for (Route route : initialSolution.getRoutes()) {
             for (Node node : route.getNodeList()) {
-                System.out.print(node.getId() + " - ");
+                System.out.print(node.getId() + " ");
             }
             System.out.println("");
         }

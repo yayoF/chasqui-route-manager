@@ -217,6 +217,7 @@ public class TabuSearch {
             }
             
         }
+        
         return hornyOnes;
     }
 
