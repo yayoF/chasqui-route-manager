@@ -116,12 +116,16 @@ public class TabuSearch {
                 currentVehicle.setInUse(true);
             }
 
+            System.out.println(currentVehicle);
+
             while(currentVehicle.getCapacity(r) > 0) {
                 nearestCustomer = findNearestCustomer(currentVehicle, r, visitedCustomers);
 
                 if(nearestCustomer == null) {
                     break;
                 }
+
+                System.out.println(currentVehicle + " intento agregar : " + nearestCustomer.getId() + " con vehicle con capacidad " + currentVehicle.getCapacity(r));
 
                 if( currentVehicle.getCapacity(r) > nearestCustomer.getDemand() ){
                     r.addNode(nearestCustomer);
@@ -187,7 +191,7 @@ public class TabuSearch {
 
     private Node dummyPicker(Node candidateA, Node candidateB, Position currPos) {
 
-        if (  (candidateA.getPos().distance(currPos)) < (candidateB.getPos().distance(currPos))  ){
+        if ( (candidateA.getPos().distance(currPos)) < (candidateB.getPos().distance(currPos)) ){
             return candidateA;
         }else{
             return candidateB;
