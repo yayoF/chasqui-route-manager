@@ -110,8 +110,6 @@ public class TabuSearch {
             Route r = new Route(this.getDepotNode());
             currentVehicle = getAvailableVehicle();
 
-
-
             if( currentVehicle == null ) {
                 break;
             } else {
@@ -135,8 +133,6 @@ public class TabuSearch {
             initialSolution.addRoute(r);
 
         } //until all customers are assigned a route
-
-
 
         return initialSolution;
 
