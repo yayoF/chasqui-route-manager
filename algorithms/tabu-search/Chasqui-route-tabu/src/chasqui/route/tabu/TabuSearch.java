@@ -24,7 +24,7 @@ public class TabuSearch {
     protected ArrayList<SolutionCandidate> tabuList = new ArrayList();
     protected ArrayList<SolutionCandidate> sNeighborhood = new ArrayList();
     protected ArrayList<NeighborGenerator> tabuoOperators = new ArrayList();
-    
+
     //specific-problem-dependant
     private ArrayList<Node> customersList = new ArrayList();
     private Node depotNode;
@@ -61,14 +61,14 @@ public class TabuSearch {
             if( bestCandidate.fitness() > getsBest().fitness() ) {
                 sBest = bestCandidate;
             } else {
-                //not exist a better solution 
+                //not exist a better solution
                 iteration ++;
             }
-            
+
             //update Tabu List
             addCandidateTabuList(bestCandidate);
 
-            
+
 
         }
 
@@ -86,14 +86,14 @@ public class TabuSearch {
     }
 
     protected ArrayList<SolutionCandidate> generateNeighborhood(SolutionCandidate sCandidate) {
-        
-        ArrayList<SolutionCandidate> neighbors  = new ArrayList(); 
-    
+
+        ArrayList<SolutionCandidate> neighbors  = new ArrayList();
+
         for (NeighborGenerator operator: tabuoOperators) {
             SolutionCandidate neighbor = operator.generateNeighbor(sCandidate);
             neighbors.add(neighbor);
         }
-                
+
         return neighbors;
     }
 
@@ -104,23 +104,23 @@ public class TabuSearch {
         Vehicle currentVehicle;
         Node nearestCustomer;
         ArrayList<Integer> visitedCustomers = new ArrayList();
-            
+
         while (getCustomersList().size() - routedCustomers > 0){
 
             Route r = new Route(this.getDepotNode());
             currentVehicle = getAvailableVehicle();
-            
-           
-            
+
+
+
             if( currentVehicle == null ) {
                 break;
             } else {
                 currentVehicle.setInUse(true);
             }
-       
+
             while(currentVehicle.getCapacity(r) > 0) {
                 nearestCustomer = findNearestCustomer(currentVehicle, r, visitedCustomers);
- 
+
                 if(nearestCustomer == null) {
                     break;
                 }
@@ -136,20 +136,20 @@ public class TabuSearch {
 
         } //until all customers are assigned a route
 
-        
-        
+
+
         return initialSolution;
 
     }
 
     protected Node findNearestCustomer(Vehicle v, Route r, ArrayList<Integer> visitedCustomers) {
-        
-        Position currPos = r.getLastAddedNode().getPos();        
-        
+
+        Position currPos = r.getLastAddedNode().getPos();
+
         if (getCustomersList().size() == (visitedCustomers.size() + 2) ){
             return null;
         }
-        
+
         ArrayList<Node> hornyCustomers = getHornyCustomers(getCustomersList(), visitedCustomers);
         if (hornyCustomers != null){
             if (hornyCustomers.size() == 1){
@@ -157,20 +157,20 @@ public class TabuSearch {
                 return hornyCustomers.get(0);
             }
         }
-        
+
         int rIndA = Random.getRandomInt(0, hornyCustomers.size()-1);
         int rIndB = Random.getRandomIntDiff(0, hornyCustomers.size()-1, rIndA);
-        
+
         Node chosenCustomer = dummyPicker(hornyCustomers.get(rIndA), hornyCustomers.get(rIndB), currPos);
-        
+
 
         visitedCustomers.add(chosenCustomer.getId());
-        return chosenCustomer; 
+        return chosenCustomer;
     }
 
     protected Vehicle getAvailableVehicle() {
-        
-        for (Vehicle vehicle : this.getVehicleList()) {            
+
+        for (Vehicle vehicle : this.getVehicleList()) {
             if(! vehicle.isInUse()) {
                 vehicle.setInUse(true);
                 return vehicle;
@@ -184,14 +184,13 @@ public class TabuSearch {
         return iteration >= this.getMaxIteration();
 
     }
-    
+
     protected SolutionCandidate getSolution() {
         return getsBest();
     }
 
     private Node dummyPicker(Node candidateA, Node candidateB, Position currPos) {
-        
-        Node chosenOne = null;
+
         if (  (candidateA.getPos().distance(currPos)) < (candidateB.getPos().distance(currPos))  ){
             return candidateA;
         }else{
@@ -199,26 +198,26 @@ public class TabuSearch {
         }
         //returns closest candidate to current position
     }
-    
+
     private ArrayList<Node> getHornyCustomers(ArrayList<Node> customersList, ArrayList<Integer> visitedCustomers) {
-        
+
         ArrayList<Node> hornyOnes = new ArrayList();
         boolean foundCustomerInVisitedCustomers = false;
-        
+
         for (int i=0; i< customersList.size(); i++){ //customersList includes the customer representing de Depot (pos 0)
             for (int j=0; j<visitedCustomers.size(); j++){
                 if (customersList.get(i).getId() == visitedCustomers.get(j)){
                     foundCustomerInVisitedCustomers = true;
                 }
             }
-            
+
             if (!foundCustomerInVisitedCustomers) {
                 hornyOnes.add(customersList.get(i));
             }
             foundCustomerInVisitedCustomers = false;
-            
+
         }
-        
+
         return hornyOnes;
     }
 
@@ -298,5 +297,5 @@ public class TabuSearch {
     public void setVehicleList(ArrayList<Vehicle> vehicleList) {
         this.vehicleList = vehicleList;
     }
-    
+
 }
