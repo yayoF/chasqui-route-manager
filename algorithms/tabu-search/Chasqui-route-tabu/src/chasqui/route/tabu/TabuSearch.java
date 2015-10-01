@@ -16,7 +16,7 @@ import utils.Random;
  */
 public class TabuSearch {
     //tabu-search-dependant
-    private int maxIteration = 1000;
+    private int maxIteration = 10;
     //tabu-search-dependant
     private int maxTabuSize = 10;
     protected SolutionCandidate sCandidate, bestCandidate;
@@ -38,12 +38,13 @@ public class TabuSearch {
 
     public void execute () {
         int iteration = 0;
-        boolean b = false;
 
         //generate a optimize initial solutioncandidate
         sBest = sCandidate = generateInitialSolution();
 
-        while (b) {
+        while (iteration > this.maxIteration) {
+
+            System.out.println("entro");
 
             sNeighborhood = generateNeighborhood(sCandidate);
 
