@@ -116,7 +116,7 @@ public class TabuSearch {
                 currentVehicle.setInUse(true);
             }
 
-            System.out.println(currentVehicle);
+            //System.out.println(currentVehicle);
 
             while(currentVehicle.getCapacity(r) > 0) {
                 nearestCustomer = findNearestCustomer(currentVehicle, r, visitedCustomers);
@@ -125,11 +125,14 @@ public class TabuSearch {
                     break;
                 }
 
-                System.out.println(currentVehicle + " intento agregar : " + nearestCustomer.getId() + " con vehicle con capacidad " + currentVehicle.getCapacity(r));
+                //System.out.println(currentVehicle + " intento agregar : " + nearestCustomer.getId() + " con vehicle con capacidad " + currentVehicle.getCapacity(r));
 
                 if( currentVehicle.getCapacity(r) > nearestCustomer.getDemand() ){
                     r.addNode(nearestCustomer);
+                    visitedCustomers.add(nearestCustomer.getId());
                     routedCustomers ++;
+                } else {
+                    break;
                 }
 
             }
@@ -153,7 +156,6 @@ public class TabuSearch {
         ArrayList<Node> hornyCustomers = getHornyCustomers(getCustomersList(), visitedCustomers);
         if (hornyCustomers != null){
             if (hornyCustomers.size() == 1){
-                visitedCustomers.add(hornyCustomers.get(0).getId());
                 return hornyCustomers.get(0);
             }
         }
@@ -164,7 +166,6 @@ public class TabuSearch {
         Node chosenCustomer = dummyPicker(hornyCustomers.get(rIndA), hornyCustomers.get(rIndB), currPos);
 
 
-        visitedCustomers.add(chosenCustomer.getId());
         return chosenCustomer;
     }
 
