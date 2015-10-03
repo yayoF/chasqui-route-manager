@@ -56,7 +56,7 @@ public class ChasquiRouteTabu {
         split = strLine.split("\\s");
 
         Node depotNode = new Node(0, Integer.parseInt(split[0]), Integer.parseInt(split[1]), 0);
-        
+
         int x, y, demand;
         for (int i = 0; i < nNodes; i++) {
             strLine = br.readLine();
@@ -65,7 +65,7 @@ public class ChasquiRouteTabu {
             y = Integer.parseInt(split[1]);
             demand = Integer.parseInt(split[2]);
 
-            customers.add(new Node(i, x, y, demand));
+            customers.add(new Node(i+1, x, y, demand));
 
         }
         br.close();
@@ -75,17 +75,18 @@ public class ChasquiRouteTabu {
         chasquiOracle.setCustomersList(customers);
         chasquiOracle.setDepotNode(depotNode);
         chasquiOracle.setVehicleList(vehicleList);
-        
 
         chasquiOracle.execute();
 
         SolutionCandidate initialSolution = chasquiOracle.getSolution();
-        
+
         for (Route route : initialSolution.getRoutes()) {
-            for (Node node : route.getNodeList()) {
+            if(route.getDemand() != 0) {
+                for (Node node : route.getNodeList()) {
                 System.out.print(node.getId() + " ");
+                }
+                System.out.println("");
             }
-            System.out.println("");
         }
         // TODO code application logic here
     }

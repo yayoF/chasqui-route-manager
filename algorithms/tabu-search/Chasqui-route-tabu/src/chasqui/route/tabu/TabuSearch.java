@@ -40,11 +40,9 @@ public class TabuSearch {
         int iteration = 0;
 
         //generate a optimize initial solutioncandidate
-        sBest = sCandidate = generateInitialSolution();
+        bestCandidate = sBest = sCandidate = generateInitialSolution();
 
-        while (iteration > this.maxIteration) {
-
-            System.out.println("entro");
+        while (iteration < this.maxIteration) {
 
             sNeighborhood = generateNeighborhood(sCandidate);
 
