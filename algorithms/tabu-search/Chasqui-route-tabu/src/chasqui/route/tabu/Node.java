@@ -10,11 +10,11 @@ package chasqui.route.tabu;
  * @author yayo
  */
 public class Node {
-    
+
     private int id;
     private Position pos;
     private int demand;
-    
+
     public Node(int id, int x, int y, int demand) {
         this.id = id;
         this.pos = new Position(x,y);
@@ -62,6 +62,6 @@ public class Node {
     public void setDemand(int demand) {
         this.demand = demand;
     }
-    
-    
+
+
 }
