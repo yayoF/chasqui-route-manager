@@ -6,9 +6,8 @@
 package simple.route.manager.gui;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import models.Vehicle;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
+import managers.*;
+import models.*;
 
 public class SimpleRouteManagerGui {
 
@@ -17,14 +16,17 @@ public class SimpleRouteManagerGui {
      */
     public static void main(String[] args) {
         // TODO code application logic here\\
+        VehicleManager vM = new VehicleManager();
 
-        AnnotationConfiguration config = new AnnotationConfiguration();
-        config.addAnnotatedClass(Vehicle.class );
-        config.configure();
-        new SchemaExport(config).create(true, true);
+        Vehicle v = new Vehicle();
+        v.setMaxCapacity(20);
 
-        //JFrame loginFrame = new loginWindow();
-        //loginFrame.setVisible(true);
+        vM.addVehicle(v);
+
+
+
+       // JFrame loginFrame = new loginWindow();
+       // loginFrame.setVisible(true);
     }
 
 }

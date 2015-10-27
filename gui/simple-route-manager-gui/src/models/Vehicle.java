@@ -15,14 +15,15 @@ import javax.persistence.*;
 @Entity
 public class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int maxCapacity;
 
     /**
      * @return the id
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public int getId() {
         return id;
     }
