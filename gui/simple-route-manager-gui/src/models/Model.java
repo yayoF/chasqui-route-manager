@@ -3,23 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package managers;
+package models;
 
-import jdk.nashorn.internal.runtime.regexp.joni.constants.CCVALTYPE;
-import models.Vehicle;
-import org.hibernate.Session;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Joca
  */
-public class VehicleManager extends Manager {
-
-
+public class Model {
 
     
-
-
-
 }

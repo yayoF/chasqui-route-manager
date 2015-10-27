@@ -18,7 +18,8 @@ public class SimpleRouteManagerGui {
         // TODO code application logic here\\
 
 
-        /*VehicleManager vM = new VehicleManager();
+        /*
+        VehicleManager vM = new VehicleManager();
         VehicleTypeManager vtM = new VehicleTypeManager();
 
         VehicleType vt = vtM.findById(1);
@@ -26,7 +27,8 @@ public class SimpleRouteManagerGui {
         Vehicle v = new Vehicle();
         v.setMaxCapacity(20);
         v.setVehicleType(vt);
-        vM.addVehicle(v);
+        vM.addEntity(v);
+
         */
 
 

@@ -13,11 +13,9 @@ import javax.persistence.*;
  */
 
 @Entity
-public class Vehicle {
+public class Vehicle extends Model {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
     private int maxCapacity;
     private int weight;
     private String state;
@@ -25,10 +23,13 @@ public class Vehicle {
     @ManyToOne
     private VehicleType vehicleType;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     /**
      * @return the id
      */
-
     public int getId() {
         return id;
     }
@@ -96,6 +97,6 @@ public class Vehicle {
         this.vehicleType = vehicleType;
     }
 
-    
+
 
 }

@@ -11,26 +11,14 @@ import javax.persistence.*;
  * @author Joca
  */
 @Entity
-public class VehicleType {
+public class VehicleType  extends Model{
+
+
+    private String name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
      * @return the id
@@ -45,5 +33,20 @@ public class VehicleType {
     public void setId(int id) {
         this.id = id;
     }
+    
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
 }
