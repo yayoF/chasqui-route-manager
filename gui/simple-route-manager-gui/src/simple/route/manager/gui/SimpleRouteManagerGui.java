@@ -16,7 +16,9 @@ public class SimpleRouteManagerGui {
      */
     public static void main(String[] args) {
         // TODO code application logic here\\
-        VehicleManager vM = new VehicleManager();
+
+
+        /*VehicleManager vM = new VehicleManager();
         VehicleTypeManager vtM = new VehicleTypeManager();
 
         VehicleType vt = vtM.findById(1);
@@ -25,11 +27,11 @@ public class SimpleRouteManagerGui {
         v.setMaxCapacity(20);
         v.setVehicleType(vt);
         vM.addVehicle(v);
+        */
 
 
-
-       // JFrame loginFrame = new loginWindow();
-       // loginFrame.setVisible(true);
+       JFrame loginFrame = new loginWindow();
+       loginFrame.setVisible(true);
     }
 
 }
