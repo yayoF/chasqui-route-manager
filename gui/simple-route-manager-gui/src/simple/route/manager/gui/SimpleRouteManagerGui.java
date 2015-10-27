@@ -17,10 +17,13 @@ public class SimpleRouteManagerGui {
     public static void main(String[] args) {
         // TODO code application logic here\\
         VehicleManager vM = new VehicleManager();
+        VehicleTypeManager vtM = new VehicleTypeManager();
+
+        VehicleType vt = vtM.findById(1);
 
         Vehicle v = new Vehicle();
         v.setMaxCapacity(20);
-
+        v.setVehicleType(vt);
         vM.addVehicle(v);
 
 

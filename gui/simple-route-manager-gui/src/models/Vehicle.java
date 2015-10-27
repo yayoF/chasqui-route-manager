@@ -19,6 +19,11 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int maxCapacity;
+    private int weight;
+    private String state;
+
+    @ManyToOne
+    private VehicleType vehicleType;
 
     /**
      * @return the id
@@ -48,5 +53,49 @@ public class Vehicle {
     public void setMaxCapacity(int maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
+
+    /**
+     * @return the weight
+     */
+    public int getWeight() {
+        return weight;
+    }
+
+    /**
+     * @param weight the weight to set
+     */
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * @return the state
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
+     * @return the vehicleType
+     */
+    public VehicleType getVehicleType() {
+        return vehicleType;
+    }
+
+    /**
+     * @param vehicleType the vehicleType to set
+     */
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    
 
 }

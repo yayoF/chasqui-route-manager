@@ -7,11 +7,12 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/marshallers?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     
-     <!-- Set automcatically update -->
+    <!-- Set automcatically update -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    
     <!-- Persistent classes -->
     <mapping class="models.Vehicle"/>
-
+    <mapping class="models.VehicleType"/>
   </session-factory>
 </hibernate-configuration>
